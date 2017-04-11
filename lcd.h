@@ -46,7 +46,6 @@
 void lcd_init(void);
 void lcd_contrast(unsigned char contrast);
 void lcd_clear(void);
-void lcd_clear_area(unsigned char line, unsigned char startX, unsigned char endX);
 void lcd_clear_line(unsigned char line);
 void lcd_goto_xy(unsigned char x, unsigned char y);
 void lcd_goto_xy_exact(unsigned char x, unsigned char y);
@@ -55,6 +54,8 @@ void lcd_str(char* str);
 void lcd_pixel(int x,int y);
 void lcd_Line_vert(int x_Start, int y_Start, int Lenght);
 void lcd_Line_Hor(int x_Start, int y_Start, int Lenght);
+void lcd_clear_obj(uint8_t *tex);
+void lcd_clear_area(int x, int y, int x0, int y0);
 #endif
 
 

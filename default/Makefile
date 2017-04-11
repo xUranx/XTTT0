@@ -37,7 +37,7 @@ HEX_EEPROM_FLAGS += --change-section-lma .eeprom=0 --no-change-warnings
 
 
 ## Objects that must be built in order to link
-OBJECTS = Harj9.o lcd.o 
+OBJECTS = Harj9.o lcd.o printhex.o 
 
 ## Objects explicitly added by the user
 LINKONLYOBJECTS = 
@@ -48,6 +48,9 @@ Harj9.o: ../Harj9.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
 lcd.o: ../lcd.c
+	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
+
+printhex.o: ../printhex.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
 ##Link

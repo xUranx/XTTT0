@@ -231,7 +231,52 @@ int j,i;
 	lcdCacheIdx = 0;
 	lcdCacheIdy = 0;
 }
+void lcd_clear_obj(uint8_t *tex)
+{
+int j,i;
 
+	for(j=0;j<8;j++){
+		lcd_send(0xB0|j, LCD_CMD);	// page j
+		lcd_send(0x10, LCD_CMD);
+		lcd_send(0x00, LCD_CMD);	// column 0
+				
+
+		for(i=0;i<128;i++){
+			lcd_send(0x00, LCD_DATA);
+			lcdCacheData[i][j]=0;		
+			}			
+	}    
+
+	lcd_send(0xB0, LCD_CMD);	// page 0
+	lcd_send(0x10, LCD_CMD);
+	lcd_send(0x00, LCD_CMD);	// column 0
+
+	lcdCacheIdx = 0;
+	lcdCacheIdy = 0;
+}
+void lcd_clear_area(int x, int y, int x0, int y0)
+{
+int j,i;
+
+	for(j=0;j<8;j++){
+		lcd_send(0xB0|j, LCD_CMD);	// page j
+		lcd_send(0x10, LCD_CMD);
+		lcd_send(0x00, LCD_CMD);	// column 0
+				
+
+		for(i=0;i<128;i++){
+			lcd_send(0x00, LCD_DATA);
+			lcdCacheData[i][j]=0;		
+			}			
+	}    
+
+	lcd_send(0xB0, LCD_CMD);	// page 0
+	lcd_send(0x10, LCD_CMD);
+	lcd_send(0x00, LCD_CMD);	// column 0
+
+	lcdCacheIdx = 0;
+	lcdCacheIdy = 0;
+}
 /**********************************************
 Sets cursor location to exact xy pixel location on the lcd 
 
