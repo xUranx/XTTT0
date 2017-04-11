@@ -3,27 +3,27 @@ Harj9.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000009b0  00000000  00000000  00000074  2**1
+  0 .text         00000a72  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .bss          00000804  00800100  00800100  00000a24  2**0
+  1 .bss          00000804  00800100  00800100  00000ae6  2**0
                   ALLOC
-  2 .debug_aranges 00000040  00000000  00000000  00000a24  2**0
+  2 .debug_aranges 00000040  00000000  00000000  00000ae6  2**0
                   CONTENTS, READONLY, DEBUGGING
-  3 .debug_pubnames 0000013d  00000000  00000000  00000a64  2**0
+  3 .debug_pubnames 00000174  00000000  00000000  00000b26  2**0
                   CONTENTS, READONLY, DEBUGGING
-  4 .debug_info   00000704  00000000  00000000  00000ba1  2**0
+  4 .debug_info   00000880  00000000  00000000  00000c9a  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_abbrev 000002d4  00000000  00000000  000012a5  2**0
+  5 .debug_abbrev 0000033e  00000000  00000000  0000151a  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_line   000006d9  00000000  00000000  00001579  2**0
+  6 .debug_line   000007d0  00000000  00000000  00001858  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_frame  00000110  00000000  00000000  00001c54  2**2
+  7 .debug_frame  00000150  00000000  00000000  00002028  2**2
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_str    00000203  00000000  00000000  00001d64  2**0
+  8 .debug_str    00000261  00000000  00000000  00002178  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_loc    00000631  00000000  00000000  00001f67  2**0
+  9 .debug_loc    00000821  00000000  00000000  000023d9  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_ranges 00000018  00000000  00000000  00002598  2**0
+ 10 .debug_ranges 00000018  00000000  00000000  00002bfa  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -110,8 +110,8 @@ Disassembly of section .text:
  288:	11 e0       	ldi	r17, 0x01	; 1
  28a:	a0 e0       	ldi	r26, 0x00	; 0
  28c:	b1 e0       	ldi	r27, 0x01	; 1
- 28e:	e0 eb       	ldi	r30, 0xB0	; 176
- 290:	f9 e0       	ldi	r31, 0x09	; 9
+ 28e:	e2 e7       	ldi	r30, 0x72	; 114
+ 290:	fa e0       	ldi	r31, 0x0A	; 10
  292:	00 e0       	ldi	r16, 0x00	; 0
  294:	0b bf       	out	0x3b, r16	; 59
  296:	02 c0       	rjmp	.+4      	; 0x29c <__do_copy_data+0x14>
@@ -134,8 +134,8 @@ Disassembly of section .text:
  2ac:	a4 30       	cpi	r26, 0x04	; 4
  2ae:	b1 07       	cpc	r27, r17
  2b0:	e1 f7       	brne	.-8      	; 0x2aa <.do_clear_bss_loop>
- 2b2:	0e 94 56 02 	call	0x4ac	; 0x4ac <main>
- 2b6:	0c 94 d6 04 	jmp	0x9ac	; 0x9ac <_exit>
+ 2b2:	0e 94 d7 02 	call	0x5ae	; 0x5ae <main>
+ 2b6:	0c 94 37 05 	jmp	0xa6e	; 0xa6e <_exit>
 
 000002ba <__bad_interrupt>:
  2ba:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -197,25 +197,25 @@ void drawCirc(int x0, int y0, int radius)
  30e:	68 0d       	add	r22, r8
  310:	79 1d       	adc	r23, r9
  312:	c3 01       	movw	r24, r6
- 314:	0e 94 f5 02 	call	0x5ea	; 0x5ea <lcd_pixel>
+ 314:	0e 94 56 03 	call	0x6ac	; 0x6ac <lcd_pixel>
 	  lcd_pixel(x0, y0 - radius);
  318:	b4 01       	movw	r22, r8
  31a:	60 1b       	sub	r22, r16
  31c:	71 0b       	sbc	r23, r17
  31e:	c3 01       	movw	r24, r6
- 320:	0e 94 f5 02 	call	0x5ea	; 0x5ea <lcd_pixel>
+ 320:	0e 94 56 03 	call	0x6ac	; 0x6ac <lcd_pixel>
 	  lcd_pixel(x0 + radius, y0);
  324:	c8 01       	movw	r24, r16
  326:	86 0d       	add	r24, r6
  328:	97 1d       	adc	r25, r7
  32a:	b4 01       	movw	r22, r8
- 32c:	0e 94 f5 02 	call	0x5ea	; 0x5ea <lcd_pixel>
+ 32c:	0e 94 56 03 	call	0x6ac	; 0x6ac <lcd_pixel>
 	  lcd_pixel(x0 - radius, y0);
  330:	c3 01       	movw	r24, r6
  332:	80 1b       	sub	r24, r16
  334:	91 0b       	sbc	r25, r17
  336:	b4 01       	movw	r22, r8
- 338:	0e 94 f5 02 	call	0x5ea	; 0x5ea <lcd_pixel>
+ 338:	0e 94 56 03 	call	0x6ac	; 0x6ac <lcd_pixel>
  33c:	58 01       	movw	r10, r16
  33e:	81 e0       	ldi	r24, 0x01	; 1
  340:	28 2e       	mov	r2, r24
@@ -280,7 +280,7 @@ void drawCirc(int x0, int y0, int radius)
  382:	19 1d       	adc	r17, r9
  384:	c6 01       	movw	r24, r12
  386:	b8 01       	movw	r22, r16
- 388:	0e 94 f5 02 	call	0x5ea	; 0x5ea <lcd_pixel>
+ 388:	0e 94 56 03 	call	0x6ac	; 0x6ac <lcd_pixel>
  38c:	73 01       	movw	r14, r6
  38e:	8b 81       	ldd	r24, Y+3	; 0x03
  390:	9c 81       	ldd	r25, Y+4	; 0x04
@@ -289,18 +289,18 @@ void drawCirc(int x0, int y0, int radius)
 		lcd_pixel(x0 - x, y0 + y);
  396:	c7 01       	movw	r24, r14
  398:	b8 01       	movw	r22, r16
- 39a:	0e 94 f5 02 	call	0x5ea	; 0x5ea <lcd_pixel>
+ 39a:	0e 94 56 03 	call	0x6ac	; 0x6ac <lcd_pixel>
 		lcd_pixel(x0 + x, y0 - y);
  39e:	84 01       	movw	r16, r8
  3a0:	0a 19       	sub	r16, r10
  3a2:	1b 09       	sbc	r17, r11
  3a4:	c6 01       	movw	r24, r12
  3a6:	b8 01       	movw	r22, r16
- 3a8:	0e 94 f5 02 	call	0x5ea	; 0x5ea <lcd_pixel>
+ 3a8:	0e 94 56 03 	call	0x6ac	; 0x6ac <lcd_pixel>
 		lcd_pixel(x0 - x, y0 - y);
  3ac:	c7 01       	movw	r24, r14
  3ae:	b8 01       	movw	r22, r16
- 3b0:	0e 94 f5 02 	call	0x5ea	; 0x5ea <lcd_pixel>
+ 3b0:	0e 94 56 03 	call	0x6ac	; 0x6ac <lcd_pixel>
 		lcd_pixel(x0 + y, y0 + x);
  3b4:	65 01       	movw	r12, r10
  3b6:	c6 0c       	add	r12, r6
@@ -323,14 +323,14 @@ void drawCirc(int x0, int y0, int radius)
 		lcd_pixel(x0 + y, y0 + x);
  3c2:	c6 01       	movw	r24, r12
  3c4:	b8 01       	movw	r22, r16
- 3c6:	0e 94 f5 02 	call	0x5ea	; 0x5ea <lcd_pixel>
+ 3c6:	0e 94 56 03 	call	0x6ac	; 0x6ac <lcd_pixel>
 		lcd_pixel(x0 - y, y0 + x);
  3ca:	73 01       	movw	r14, r6
  3cc:	ea 18       	sub	r14, r10
  3ce:	fb 08       	sbc	r15, r11
  3d0:	c7 01       	movw	r24, r14
  3d2:	b8 01       	movw	r22, r16
- 3d4:	0e 94 f5 02 	call	0x5ea	; 0x5ea <lcd_pixel>
+ 3d4:	0e 94 56 03 	call	0x6ac	; 0x6ac <lcd_pixel>
  3d8:	84 01       	movw	r16, r8
  3da:	eb 81       	ldd	r30, Y+3	; 0x03
  3dc:	fc 81       	ldd	r31, Y+4	; 0x04
@@ -339,11 +339,11 @@ void drawCirc(int x0, int y0, int radius)
 		lcd_pixel(x0 + y, y0 - x);
  3e2:	c6 01       	movw	r24, r12
  3e4:	b8 01       	movw	r22, r16
- 3e6:	0e 94 f5 02 	call	0x5ea	; 0x5ea <lcd_pixel>
+ 3e6:	0e 94 56 03 	call	0x6ac	; 0x6ac <lcd_pixel>
 		lcd_pixel(x0 - y, y0 - x);
  3ea:	c7 01       	movw	r24, r14
  3ec:	b8 01       	movw	r22, r16
- 3ee:	0e 94 f5 02 	call	0x5ea	; 0x5ea <lcd_pixel>
+ 3ee:	0e 94 56 03 	call	0x6ac	; 0x6ac <lcd_pixel>
 	  lcd_pixel(x0, y0 + radius);
 	  lcd_pixel(x0, y0 - radius);
 	  lcd_pixel(x0 + radius, y0);
@@ -387,10 +387,10 @@ void drawCirc(int x0, int y0, int radius)
  42a:	08 95       	ret
 
 0000042c <drawBox>:
-/********************************
- main 
-
- *******************************/
+	drawLine(0,sectorY*2,lenght,vertical);
+	drawLine(sectorX,0,lenght,horizontal);
+	drawLine(sectorX*2,0,lenght,horizontal);
+}
 void drawBox(int x0, int y0, int x1, int y1)
 {
  42c:	af 92       	push	r10
@@ -438,11 +438,11 @@ void drawBox(int x0, int y0, int x1, int y1)
 		lcd_pixel(p,y0);
  462:	ce 01       	movw	r24, r28
  464:	b8 01       	movw	r22, r16
- 466:	0e 94 f5 02 	call	0x5ea	; 0x5ea <lcd_pixel>
+ 466:	0e 94 56 03 	call	0x6ac	; 0x6ac <lcd_pixel>
 		lcd_pixel(p,y1);
  46a:	ce 01       	movw	r24, r28
  46c:	b7 01       	movw	r22, r14
- 46e:	0e 94 f5 02 	call	0x5ea	; 0x5ea <lcd_pixel>
+ 46e:	0e 94 56 03 	call	0x6ac	; 0x6ac <lcd_pixel>
 		tempVal = y0;
 		y0 = y1;
 		y1 = tempVal;
@@ -463,11 +463,11 @@ void drawBox(int x0, int y0, int x1, int y1)
 		lcd_pixel(x0,p);
  47e:	c5 01       	movw	r24, r10
  480:	be 01       	movw	r22, r28
- 482:	0e 94 f5 02 	call	0x5ea	; 0x5ea <lcd_pixel>
+ 482:	0e 94 56 03 	call	0x6ac	; 0x6ac <lcd_pixel>
 		lcd_pixel(x1,p);
  486:	c6 01       	movw	r24, r12
  488:	be 01       	movw	r22, r28
- 48a:	0e 94 f5 02 	call	0x5ea	; 0x5ea <lcd_pixel>
+ 48a:	0e 94 56 03 	call	0x6ac	; 0x6ac <lcd_pixel>
 	for (p = x0; p <= x1; p++)
 	{
 		lcd_pixel(p,y0);
@@ -495,1036 +495,1189 @@ void drawBox(int x0, int y0, int x1, int y1)
  4a8:	af 90       	pop	r10
  4aa:	08 95       	ret
 
-000004ac <main>:
+000004ac <drawLine>:
+   int circlesIndex;
+
+};
+
+void drawLine(int x0,int y0,int lenghtL,int dir)
+{
+ 4ac:	af 92       	push	r10
+ 4ae:	bf 92       	push	r11
+ 4b0:	cf 92       	push	r12
+ 4b2:	df 92       	push	r13
+ 4b4:	ef 92       	push	r14
+ 4b6:	ff 92       	push	r15
+ 4b8:	0f 93       	push	r16
+ 4ba:	1f 93       	push	r17
+ 4bc:	cf 93       	push	r28
+ 4be:	df 93       	push	r29
+ 4c0:	8c 01       	movw	r16, r24
+ 4c2:	eb 01       	movw	r28, r22
+ 4c4:	5a 01       	movw	r10, r20
+ 4c6:	79 01       	movw	r14, r18
+ 4c8:	cc 24       	eor	r12, r12
+ 4ca:	dd 24       	eor	r13, r13
+ 4cc:	1e c0       	rjmp	.+60     	; 0x50a <drawLine+0x5e>
+	for(int i = 0;i<lenghtL;i++)
+	{
+		if(dir == horizontal)
+ 4ce:	81 e0       	ldi	r24, 0x01	; 1
+ 4d0:	e8 16       	cp	r14, r24
+ 4d2:	f1 04       	cpc	r15, r1
+ 4d4:	11 f4       	brne	.+4      	; 0x4da <drawLine+0x2e>
+		{
+			y0++;
+ 4d6:	21 96       	adiw	r28, 0x01	; 1
+ 4d8:	11 c0       	rjmp	.+34     	; 0x4fc <drawLine+0x50>
+		}
+		if(dir == vertical)
+ 4da:	82 e0       	ldi	r24, 0x02	; 2
+ 4dc:	e8 16       	cp	r14, r24
+ 4de:	f1 04       	cpc	r15, r1
+ 4e0:	59 f0       	breq	.+22     	; 0x4f8 <drawLine+0x4c>
+		{
+			x0++;
+		}
+		if(dir == crossUP)
+ 4e2:	83 e0       	ldi	r24, 0x03	; 3
+ 4e4:	e8 16       	cp	r14, r24
+ 4e6:	f1 04       	cpc	r15, r1
+ 4e8:	11 f4       	brne	.+4      	; 0x4ee <drawLine+0x42>
+		{
+			y0--;
+ 4ea:	21 97       	sbiw	r28, 0x01	; 1
+ 4ec:	05 c0       	rjmp	.+10     	; 0x4f8 <drawLine+0x4c>
+			x0++;
+		}
+		if(dir == crossDOWN)
+ 4ee:	84 e0       	ldi	r24, 0x04	; 4
+ 4f0:	e8 16       	cp	r14, r24
+ 4f2:	f1 04       	cpc	r15, r1
+ 4f4:	19 f4       	brne	.+6      	; 0x4fc <drawLine+0x50>
+		{
+			y0++;
+ 4f6:	21 96       	adiw	r28, 0x01	; 1
+			x0++;
+ 4f8:	0f 5f       	subi	r16, 0xFF	; 255
+ 4fa:	1f 4f       	sbci	r17, 0xFF	; 255
+		}
+		lcd_pixel(x0,y0);
+ 4fc:	c8 01       	movw	r24, r16
+ 4fe:	be 01       	movw	r22, r28
+ 500:	0e 94 56 03 	call	0x6ac	; 0x6ac <lcd_pixel>
+
+};
+
+void drawLine(int x0,int y0,int lenghtL,int dir)
+{
+	for(int i = 0;i<lenghtL;i++)
+ 504:	08 94       	sec
+ 506:	c1 1c       	adc	r12, r1
+ 508:	d1 1c       	adc	r13, r1
+ 50a:	ca 14       	cp	r12, r10
+ 50c:	db 04       	cpc	r13, r11
+ 50e:	fc f2       	brlt	.-66     	; 0x4ce <drawLine+0x22>
+			y0++;
+			x0++;
+		}
+		lcd_pixel(x0,y0);
+	}
 }
+ 510:	df 91       	pop	r29
+ 512:	cf 91       	pop	r28
+ 514:	1f 91       	pop	r17
+ 516:	0f 91       	pop	r16
+ 518:	ff 90       	pop	r15
+ 51a:	ef 90       	pop	r14
+ 51c:	df 90       	pop	r13
+ 51e:	cf 90       	pop	r12
+ 520:	bf 90       	pop	r11
+ 522:	af 90       	pop	r10
+ 524:	08 95       	ret
+
+00000526 <drawGrid>:
+void drawGrid()
+{
+	int sectorY = height/3;	
+	int sectorX = lenght/3;
+
+	drawLine(0,sectorY,lenght,vertical);
+ 526:	80 e0       	ldi	r24, 0x00	; 0
+ 528:	90 e0       	ldi	r25, 0x00	; 0
+ 52a:	65 e1       	ldi	r22, 0x15	; 21
+ 52c:	70 e0       	ldi	r23, 0x00	; 0
+ 52e:	40 e8       	ldi	r20, 0x80	; 128
+ 530:	50 e0       	ldi	r21, 0x00	; 0
+ 532:	22 e0       	ldi	r18, 0x02	; 2
+ 534:	30 e0       	ldi	r19, 0x00	; 0
+ 536:	0e 94 56 02 	call	0x4ac	; 0x4ac <drawLine>
+	drawLine(0,sectorY*2,lenght,vertical);
+ 53a:	80 e0       	ldi	r24, 0x00	; 0
+ 53c:	90 e0       	ldi	r25, 0x00	; 0
+ 53e:	6a e2       	ldi	r22, 0x2A	; 42
+ 540:	70 e0       	ldi	r23, 0x00	; 0
+ 542:	40 e8       	ldi	r20, 0x80	; 128
+ 544:	50 e0       	ldi	r21, 0x00	; 0
+ 546:	22 e0       	ldi	r18, 0x02	; 2
+ 548:	30 e0       	ldi	r19, 0x00	; 0
+ 54a:	0e 94 56 02 	call	0x4ac	; 0x4ac <drawLine>
+	drawLine(sectorX,0,lenght,horizontal);
+ 54e:	8a e2       	ldi	r24, 0x2A	; 42
+ 550:	90 e0       	ldi	r25, 0x00	; 0
+ 552:	60 e0       	ldi	r22, 0x00	; 0
+ 554:	70 e0       	ldi	r23, 0x00	; 0
+ 556:	40 e8       	ldi	r20, 0x80	; 128
+ 558:	50 e0       	ldi	r21, 0x00	; 0
+ 55a:	21 e0       	ldi	r18, 0x01	; 1
+ 55c:	30 e0       	ldi	r19, 0x00	; 0
+ 55e:	0e 94 56 02 	call	0x4ac	; 0x4ac <drawLine>
+	drawLine(sectorX*2,0,lenght,horizontal);
+ 562:	84 e5       	ldi	r24, 0x54	; 84
+ 564:	90 e0       	ldi	r25, 0x00	; 0
+ 566:	60 e0       	ldi	r22, 0x00	; 0
+ 568:	70 e0       	ldi	r23, 0x00	; 0
+ 56a:	40 e8       	ldi	r20, 0x80	; 128
+ 56c:	50 e0       	ldi	r21, 0x00	; 0
+ 56e:	21 e0       	ldi	r18, 0x01	; 1
+ 570:	30 e0       	ldi	r19, 0x00	; 0
+ 572:	0e 94 56 02 	call	0x4ac	; 0x4ac <drawLine>
+}
+ 576:	08 95       	ret
+
+00000578 <drawCross>:
+		}
+		lcd_pixel(x0,y0);
+	}
+}
+void drawCross(int x,int y)
+{
+ 578:	ef 92       	push	r14
+ 57a:	ff 92       	push	r15
+ 57c:	0f 93       	push	r16
+ 57e:	1f 93       	push	r17
+ 580:	7c 01       	movw	r14, r24
+ 582:	8b 01       	movw	r16, r22
+	drawLine(x,y,crossLenght,crossDOWN);
+ 584:	4e e0       	ldi	r20, 0x0E	; 14
+ 586:	50 e0       	ldi	r21, 0x00	; 0
+ 588:	24 e0       	ldi	r18, 0x04	; 4
+ 58a:	30 e0       	ldi	r19, 0x00	; 0
+ 58c:	0e 94 56 02 	call	0x4ac	; 0x4ac <drawLine>
+	drawLine(x,y+15,crossLenght,crossUP);
+ 590:	01 5f       	subi	r16, 0xF1	; 241
+ 592:	1f 4f       	sbci	r17, 0xFF	; 255
+ 594:	c7 01       	movw	r24, r14
+ 596:	b8 01       	movw	r22, r16
+ 598:	4e e0       	ldi	r20, 0x0E	; 14
+ 59a:	50 e0       	ldi	r21, 0x00	; 0
+ 59c:	23 e0       	ldi	r18, 0x03	; 3
+ 59e:	30 e0       	ldi	r19, 0x00	; 0
+ 5a0:	0e 94 56 02 	call	0x4ac	; 0x4ac <drawLine>
+}
+ 5a4:	1f 91       	pop	r17
+ 5a6:	0f 91       	pop	r16
+ 5a8:	ff 90       	pop	r15
+ 5aa:	ef 90       	pop	r14
+ 5ac:	08 95       	ret
+
+000005ae <main>:
+};
 
 int main(void)
 {
 	// IO-port INIT
 	DDRA = 0xE0;
- 4ac:	80 ee       	ldi	r24, 0xE0	; 224
- 4ae:	8a bb       	out	0x1a, r24	; 26
+ 5ae:	80 ee       	ldi	r24, 0xE0	; 224
+ 5b0:	8a bb       	out	0x1a, r24	; 26
  
 	// LCD - Display Init
 	lcd_init();
- 4b0:	0e 94 d0 03 	call	0x7a0	; 0x7a0 <lcd_init>
+ 5b2:	0e 94 31 04 	call	0x862	; 0x862 <lcd_init>
 	
 	lcd_clear();
- 4b4:	0e 94 75 03 	call	0x6ea	; 0x6ea <lcd_clear>
-	
-	// Piirtää näytölle neliön pikseli kerrallaan
-	lcd_pixel(20,10);
- 4b8:	84 e1       	ldi	r24, 0x14	; 20
- 4ba:	90 e0       	ldi	r25, 0x00	; 0
- 4bc:	6a e0       	ldi	r22, 0x0A	; 10
- 4be:	70 e0       	ldi	r23, 0x00	; 0
- 4c0:	0e 94 f5 02 	call	0x5ea	; 0x5ea <lcd_pixel>
-	lcd_pixel(20,11);
- 4c4:	84 e1       	ldi	r24, 0x14	; 20
- 4c6:	90 e0       	ldi	r25, 0x00	; 0
- 4c8:	6b e0       	ldi	r22, 0x0B	; 11
- 4ca:	70 e0       	ldi	r23, 0x00	; 0
- 4cc:	0e 94 f5 02 	call	0x5ea	; 0x5ea <lcd_pixel>
-			
-	lcd_pixel(20,18);
- 4d0:	84 e1       	ldi	r24, 0x14	; 20
- 4d2:	90 e0       	ldi	r25, 0x00	; 0
- 4d4:	62 e1       	ldi	r22, 0x12	; 18
- 4d6:	70 e0       	ldi	r23, 0x00	; 0
- 4d8:	0e 94 f5 02 	call	0x5ea	; 0x5ea <lcd_pixel>
-	
-	lcd_pixel(30,10);
- 4dc:	8e e1       	ldi	r24, 0x1E	; 30
- 4de:	90 e0       	ldi	r25, 0x00	; 0
- 4e0:	6a e0       	ldi	r22, 0x0A	; 10
- 4e2:	70 e0       	ldi	r23, 0x00	; 0
- 4e4:	0e 94 f5 02 	call	0x5ea	; 0x5ea <lcd_pixel>
-	lcd_pixel(30,11);
- 4e8:	8e e1       	ldi	r24, 0x1E	; 30
- 4ea:	90 e0       	ldi	r25, 0x00	; 0
- 4ec:	6b e0       	ldi	r22, 0x0B	; 11
- 4ee:	70 e0       	ldi	r23, 0x00	; 0
- 4f0:	0e 94 f5 02 	call	0x5ea	; 0x5ea <lcd_pixel>
-		
-	lcd_pixel(30,18);
- 4f4:	8e e1       	ldi	r24, 0x1E	; 30
- 4f6:	90 e0       	ldi	r25, 0x00	; 0
- 4f8:	62 e1       	ldi	r22, 0x12	; 18
- 4fa:	70 e0       	ldi	r23, 0x00	; 0
- 4fc:	0e 94 f5 02 	call	0x5ea	; 0x5ea <lcd_pixel>
-	
-	
-	// Piirtää näytölle ympyrän 
+ 5b6:	0e 94 d6 03 	call	0x7ac	; 0x7ac <lcd_clear>
 
-	drawCirc(40, 40, 10);
- 500:	88 e2       	ldi	r24, 0x28	; 40
- 502:	90 e0       	ldi	r25, 0x00	; 0
- 504:	68 e2       	ldi	r22, 0x28	; 40
- 506:	70 e0       	ldi	r23, 0x00	; 0
- 508:	4a e0       	ldi	r20, 0x0A	; 10
- 50a:	50 e0       	ldi	r21, 0x00	; 0
- 50c:	0e 94 5f 01 	call	0x2be	; 0x2be <drawCirc>
- 	drawBox(10,10,20,20);
- 510:	8a e0       	ldi	r24, 0x0A	; 10
- 512:	90 e0       	ldi	r25, 0x00	; 0
- 514:	6a e0       	ldi	r22, 0x0A	; 10
- 516:	70 e0       	ldi	r23, 0x00	; 0
- 518:	44 e1       	ldi	r20, 0x14	; 20
- 51a:	50 e0       	ldi	r21, 0x00	; 0
- 51c:	24 e1       	ldi	r18, 0x14	; 20
- 51e:	30 e0       	ldi	r19, 0x00	; 0
- 520:	0e 94 16 02 	call	0x42c	; 0x42c <drawBox>
-
-	
-	// Testataan viivan piirtoa
-	//lcd_Line_vert(40, 40, 50); // proto Fungtio 
-	//lcd_Line_Hor(5, 5, 20);
+	drawGrid();
+ 5ba:	0e 94 93 02 	call	0x526	; 0x526 <drawGrid>
+	drawCross(50,43);
+ 5be:	82 e3       	ldi	r24, 0x32	; 50
+ 5c0:	90 e0       	ldi	r25, 0x00	; 0
+ 5c2:	6b e2       	ldi	r22, 0x2B	; 43
+ 5c4:	70 e0       	ldi	r23, 0x00	; 0
+ 5c6:	0e 94 bc 02 	call	0x578	; 0x578 <drawCross>
 }
- 524:	80 e0       	ldi	r24, 0x00	; 0
- 526:	90 e0       	ldi	r25, 0x00	; 0
- 528:	08 95       	ret
+ 5ca:	80 e0       	ldi	r24, 0x00	; 0
+ 5cc:	90 e0       	ldi	r25, 0x00	; 0
+ 5ce:	08 95       	ret
 
-0000052a <lcd_send>:
+000005d0 <moveCursor>:
+		lcd_pixel(x0 - y, y0 - x);
+	  }
+}
+void moveCursor(int x, int y,type _type)
+{
+	if (_type == cross)
+ 5d0:	45 30       	cpi	r20, 0x05	; 5
+ 5d2:	51 05       	cpc	r21, r1
+ 5d4:	19 f4       	brne	.+6      	; 0x5dc <moveCursor+0xc>
+	{
+		drawCross(x,y);
+ 5d6:	0e 94 bc 02 	call	0x578	; 0x578 <drawCross>
+ 5da:	08 95       	ret
+	}
+	else if(_type == circle)
+ 5dc:	46 30       	cpi	r20, 0x06	; 6
+ 5de:	51 05       	cpc	r21, r1
+ 5e0:	21 f4       	brne	.+8      	; 0x5ea <moveCursor+0x1a>
+	{
+		drawCirc(x,y,circleRad);
+ 5e2:	45 e4       	ldi	r20, 0x45	; 69
+ 5e4:	50 e0       	ldi	r21, 0x00	; 0
+ 5e6:	0e 94 5f 01 	call	0x2be	; 0x2be <drawCirc>
+ 5ea:	08 95       	ret
+
+000005ec <lcd_send>:
 
 Sends data to display controller 
 cd data / controll
 *************************************************/
 void lcd_send(unsigned char data, LcdCmdData cd)
 {
- 52a:	98 2f       	mov	r25, r24
+ 5ec:	98 2f       	mov	r25, r24
 int j;
 	// Data/DC are outputs for the lcd (all low)
 	LCD_DDR |= LCD_DATA_PIN | LCD_DC_PIN;
- 52c:	84 b3       	in	r24, 0x14	; 20
- 52e:	8c 60       	ori	r24, 0x0C	; 12
- 530:	84 bb       	out	0x14, r24	; 20
+ 5ee:	84 b3       	in	r24, 0x14	; 20
+ 5f0:	8c 60       	ori	r24, 0x0C	; 12
+ 5f2:	84 bb       	out	0x14, r24	; 20
 	
     // Enable display controller (active low)
     LCD_PORT &= ~LCD_CE_PIN;
- 532:	a9 98       	cbi	0x15, 1	; 21
+ 5f4:	a9 98       	cbi	0x15, 1	; 21
 
     // Either command or data
     if(cd == LCD_DATA) {
- 534:	61 30       	cpi	r22, 0x01	; 1
- 536:	11 f4       	brne	.+4      	; 0x53c <lcd_send+0x12>
+ 5f6:	61 30       	cpi	r22, 0x01	; 1
+ 5f8:	11 f4       	brne	.+4      	; 0x5fe <lcd_send+0x12>
         LCD_PORT |= LCD_DC_PIN;
- 538:	aa 9a       	sbi	0x15, 2	; 21
- 53a:	01 c0       	rjmp	.+2      	; 0x53e <lcd_send+0x14>
+ 5fa:	aa 9a       	sbi	0x15, 2	; 21
+ 5fc:	01 c0       	rjmp	.+2      	; 0x600 <lcd_send+0x14>
     } else {
         LCD_PORT &= ~LCD_DC_PIN;
- 53c:	aa 98       	cbi	0x15, 2	; 21
- 53e:	27 e0       	ldi	r18, 0x07	; 7
- 540:	30 e0       	ldi	r19, 0x00	; 0
+ 5fe:	aa 98       	cbi	0x15, 2	; 21
+ 600:	27 e0       	ldi	r18, 0x07	; 7
+ 602:	30 e0       	ldi	r19, 0x00	; 0
     }
 	
 	for(unsigned char i=0;i<8;i++) {
 	
 		// Set the DATA pin value
 		if((data>>(7-i)) & 0x01) {
- 542:	49 2f       	mov	r20, r25
- 544:	50 e0       	ldi	r21, 0x00	; 0
- 546:	ca 01       	movw	r24, r20
- 548:	02 2e       	mov	r0, r18
- 54a:	02 c0       	rjmp	.+4      	; 0x550 <lcd_send+0x26>
- 54c:	95 95       	asr	r25
- 54e:	87 95       	ror	r24
- 550:	0a 94       	dec	r0
- 552:	e2 f7       	brpl	.-8      	; 0x54c <lcd_send+0x22>
- 554:	80 ff       	sbrs	r24, 0
- 556:	02 c0       	rjmp	.+4      	; 0x55c <lcd_send+0x32>
+ 604:	49 2f       	mov	r20, r25
+ 606:	50 e0       	ldi	r21, 0x00	; 0
+ 608:	ca 01       	movw	r24, r20
+ 60a:	02 2e       	mov	r0, r18
+ 60c:	02 c0       	rjmp	.+4      	; 0x612 <lcd_send+0x26>
+ 60e:	95 95       	asr	r25
+ 610:	87 95       	ror	r24
+ 612:	0a 94       	dec	r0
+ 614:	e2 f7       	brpl	.-8      	; 0x60e <lcd_send+0x22>
+ 616:	80 ff       	sbrs	r24, 0
+ 618:	02 c0       	rjmp	.+4      	; 0x61e <lcd_send+0x32>
 			LCD_PORT |= LCD_DATA_PIN;
- 558:	ab 9a       	sbi	0x15, 3	; 21
- 55a:	01 c0       	rjmp	.+2      	; 0x55e <lcd_send+0x34>
+ 61a:	ab 9a       	sbi	0x15, 3	; 21
+ 61c:	01 c0       	rjmp	.+2      	; 0x620 <lcd_send+0x34>
 		} else {
 			LCD_PORT &= ~LCD_DATA_PIN;
- 55c:	ab 98       	cbi	0x15, 3	; 21
+ 61e:	ab 98       	cbi	0x15, 3	; 21
 		}
 		
 		// Toggle the clock
 		LCD_PORT |= LCD_CLK_PIN;
- 55e:	ac 9a       	sbi	0x15, 4	; 21
+ 620:	ac 9a       	sbi	0x15, 4	; 21
 		for(j=0;j<4;j++); // lisätty pientä viivettä
 		LCD_PORT &= ~LCD_CLK_PIN;
- 560:	ac 98       	cbi	0x15, 4	; 21
- 562:	21 50       	subi	r18, 0x01	; 1
- 564:	30 40       	sbci	r19, 0x00	; 0
+ 622:	ac 98       	cbi	0x15, 4	; 21
+ 624:	21 50       	subi	r18, 0x01	; 1
+ 626:	30 40       	sbci	r19, 0x00	; 0
         LCD_PORT |= LCD_DC_PIN;
     } else {
         LCD_PORT &= ~LCD_DC_PIN;
     }
 	
 	for(unsigned char i=0;i<8;i++) {
- 566:	8f ef       	ldi	r24, 0xFF	; 255
- 568:	2f 3f       	cpi	r18, 0xFF	; 255
- 56a:	38 07       	cpc	r19, r24
- 56c:	61 f7       	brne	.-40     	; 0x546 <lcd_send+0x1c>
+ 628:	8f ef       	ldi	r24, 0xFF	; 255
+ 62a:	2f 3f       	cpi	r18, 0xFF	; 255
+ 62c:	38 07       	cpc	r19, r24
+ 62e:	61 f7       	brne	.-40     	; 0x608 <lcd_send+0x1c>
 		LCD_PORT &= ~LCD_CLK_PIN;
 	}
 
 	// Disable display controller
 	//LCD_PORT &= ~LCD_DC_PIN;
     LCD_PORT |= LCD_CE_PIN;
- 56e:	a9 9a       	sbi	0x15, 1	; 21
+ 630:	a9 9a       	sbi	0x15, 1	; 21
 	
 	// Data/DC can be used as button inputs when not sending to LCD (/w pullups)
 	LCD_DDR &= ~(LCD_DATA_PIN | LCD_DC_PIN);
- 570:	84 b3       	in	r24, 0x14	; 20
- 572:	83 7f       	andi	r24, 0xF3	; 243
- 574:	84 bb       	out	0x14, r24	; 20
+ 632:	84 b3       	in	r24, 0x14	; 20
+ 634:	83 7f       	andi	r24, 0xF3	; 243
+ 636:	84 bb       	out	0x14, r24	; 20
 	LCD_PORT |= LCD_DATA_PIN | LCD_DC_PIN;
- 576:	85 b3       	in	r24, 0x15	; 21
- 578:	8c 60       	ori	r24, 0x0C	; 12
- 57a:	85 bb       	out	0x15, r24	; 21
+ 638:	85 b3       	in	r24, 0x15	; 21
+ 63a:	8c 60       	ori	r24, 0x0C	; 12
+ 63c:	85 bb       	out	0x15, r24	; 21
 }
- 57c:	08 95       	ret
+ 63e:	08 95       	ret
 
-0000057e <lcd_base_addr>:
+00000640 <lcd_base_addr>:
 }
 
 // Set the base address of the lcd
 void lcd_base_addr(void) {
 
 	lcd_send(0xB0 | lcdCacheIdy, LCD_CMD);	// page
- 57e:	80 91 00 01 	lds	r24, 0x0100
- 582:	80 6b       	ori	r24, 0xB0	; 176
- 584:	60 e0       	ldi	r22, 0x00	; 0
- 586:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
+ 640:	80 91 00 01 	lds	r24, 0x0100
+ 644:	80 6b       	ori	r24, 0xB0	; 176
+ 646:	60 e0       	ldi	r22, 0x00	; 0
+ 648:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
 
 	lcd_send(0x00 | (lcdCacheIdx & 0x0F), LCD_CMD);
- 58a:	80 91 02 09 	lds	r24, 0x0902
- 58e:	8f 70       	andi	r24, 0x0F	; 15
- 590:	60 e0       	ldi	r22, 0x00	; 0
- 592:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
+ 64c:	80 91 02 09 	lds	r24, 0x0902
+ 650:	8f 70       	andi	r24, 0x0F	; 15
+ 652:	60 e0       	ldi	r22, 0x00	; 0
+ 654:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
 	lcd_send(0x10 | ((lcdCacheIdx & 0xF0)>>4), LCD_CMD);	// column
- 596:	80 91 02 09 	lds	r24, 0x0902
- 59a:	90 91 03 09 	lds	r25, 0x0903
- 59e:	80 7f       	andi	r24, 0xF0	; 240
- 5a0:	90 70       	andi	r25, 0x00	; 0
- 5a2:	24 e0       	ldi	r18, 0x04	; 4
- 5a4:	95 95       	asr	r25
- 5a6:	87 95       	ror	r24
- 5a8:	2a 95       	dec	r18
- 5aa:	e1 f7       	brne	.-8      	; 0x5a4 <lcd_base_addr+0x26>
- 5ac:	80 61       	ori	r24, 0x10	; 16
- 5ae:	60 e0       	ldi	r22, 0x00	; 0
- 5b0:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
+ 658:	80 91 02 09 	lds	r24, 0x0902
+ 65c:	90 91 03 09 	lds	r25, 0x0903
+ 660:	80 7f       	andi	r24, 0xF0	; 240
+ 662:	90 70       	andi	r25, 0x00	; 0
+ 664:	24 e0       	ldi	r18, 0x04	; 4
+ 666:	95 95       	asr	r25
+ 668:	87 95       	ror	r24
+ 66a:	2a 95       	dec	r18
+ 66c:	e1 f7       	brne	.-8      	; 0x666 <lcd_base_addr+0x26>
+ 66e:	80 61       	ori	r24, 0x10	; 16
+ 670:	60 e0       	ldi	r22, 0x00	; 0
+ 672:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
 	
 }
- 5b4:	08 95       	ret
+ 676:	08 95       	ret
 
-000005b6 <lcd_goto_xy_exact>:
+00000678 <lcd_goto_xy_exact>:
 
 ***********************************************/
 void lcd_goto_xy_exact(unsigned char x, unsigned char y)
 {
 
     lcdCacheIdx = x;
- 5b6:	80 93 02 09 	sts	0x0902, r24
- 5ba:	10 92 03 09 	sts	0x0903, r1
+ 678:	80 93 02 09 	sts	0x0902, r24
+ 67c:	10 92 03 09 	sts	0x0903, r1
 	lcdCacheIdy = y;
- 5be:	60 93 00 01 	sts	0x0100, r22
- 5c2:	10 92 01 01 	sts	0x0101, r1
+ 680:	60 93 00 01 	sts	0x0100, r22
+ 684:	10 92 01 01 	sts	0x0101, r1
 	lcd_base_addr();
- 5c6:	0e 94 bf 02 	call	0x57e	; 0x57e <lcd_base_addr>
+ 688:	0e 94 20 03 	call	0x640	; 0x640 <lcd_base_addr>
 }
- 5ca:	08 95       	ret
+ 68c:	08 95       	ret
 
-000005cc <lcd_goto_xy>:
+0000068e <lcd_goto_xy>:
 Sets cursor location to exact xy pixel location on the lcd 
 
 ***********************************************/
 void lcd_goto_xy(unsigned char x, unsigned char y)
 {
     lcdCacheIdx = x*6;
- 5cc:	96 e0       	ldi	r25, 0x06	; 6
- 5ce:	89 9f       	mul	r24, r25
- 5d0:	c0 01       	movw	r24, r0
- 5d2:	11 24       	eor	r1, r1
- 5d4:	90 93 03 09 	sts	0x0903, r25
- 5d8:	80 93 02 09 	sts	0x0902, r24
+ 68e:	96 e0       	ldi	r25, 0x06	; 6
+ 690:	89 9f       	mul	r24, r25
+ 692:	c0 01       	movw	r24, r0
+ 694:	11 24       	eor	r1, r1
+ 696:	90 93 03 09 	sts	0x0903, r25
+ 69a:	80 93 02 09 	sts	0x0902, r24
 	lcdCacheIdy = y;
- 5dc:	60 93 00 01 	sts	0x0100, r22
- 5e0:	10 92 01 01 	sts	0x0101, r1
+ 69e:	60 93 00 01 	sts	0x0100, r22
+ 6a2:	10 92 01 01 	sts	0x0101, r1
 	lcd_base_addr();
- 5e4:	0e 94 bf 02 	call	0x57e	; 0x57e <lcd_base_addr>
+ 6a6:	0e 94 20 03 	call	0x640	; 0x640 <lcd_base_addr>
 }
- 5e8:	08 95       	ret
+ 6aa:	08 95       	ret
 
-000005ea <lcd_pixel>:
+000006ac <lcd_pixel>:
 /**********************************************
 pixel _ On 
 
 **********************************************/
 void lcd_pixel(int x,int y)
 {
- 5ea:	ef 92       	push	r14
- 5ec:	ff 92       	push	r15
- 5ee:	0f 93       	push	r16
- 5f0:	1f 93       	push	r17
- 5f2:	cf 93       	push	r28
- 5f4:	df 93       	push	r29
- 5f6:	ec 01       	movw	r28, r24
- 5f8:	9b 01       	movw	r18, r22
+ 6ac:	ef 92       	push	r14
+ 6ae:	ff 92       	push	r15
+ 6b0:	0f 93       	push	r16
+ 6b2:	1f 93       	push	r17
+ 6b4:	cf 93       	push	r28
+ 6b6:	df 93       	push	r29
+ 6b8:	ec 01       	movw	r28, r24
+ 6ba:	9b 01       	movw	r18, r22
 	int j,i;
 	int i_Page;
 	int y_line = 0;
 	int merkki = 1;
 
 	i_Page = y/8; 	//page numero 0...7
- 5fa:	cb 01       	movw	r24, r22
- 5fc:	68 e0       	ldi	r22, 0x08	; 8
- 5fe:	70 e0       	ldi	r23, 0x00	; 0
- 600:	0e 94 af 04 	call	0x95e	; 0x95e <__divmodhi4>
- 604:	fb 01       	movw	r30, r22
+ 6bc:	cb 01       	movw	r24, r22
+ 6be:	68 e0       	ldi	r22, 0x08	; 8
+ 6c0:	70 e0       	ldi	r23, 0x00	; 0
+ 6c2:	0e 94 10 05 	call	0xa20	; 0xa20 <__divmodhi4>
+ 6c6:	fb 01       	movw	r30, r22
 	y_line = y%8;		//Rivinumero
- 606:	c9 01       	movw	r24, r18
- 608:	68 e0       	ldi	r22, 0x08	; 8
- 60a:	70 e0       	ldi	r23, 0x00	; 0
- 60c:	0e 94 af 04 	call	0x95e	; 0x95e <__divmodhi4>
- 610:	21 e0       	ldi	r18, 0x01	; 1
- 612:	30 e0       	ldi	r19, 0x00	; 0
- 614:	03 c0       	rjmp	.+6      	; 0x61c <lcd_pixel+0x32>
+ 6c8:	c9 01       	movw	r24, r18
+ 6ca:	68 e0       	ldi	r22, 0x08	; 8
+ 6cc:	70 e0       	ldi	r23, 0x00	; 0
+ 6ce:	0e 94 10 05 	call	0xa20	; 0xa20 <__divmodhi4>
+ 6d2:	21 e0       	ldi	r18, 0x01	; 1
+ 6d4:	30 e0       	ldi	r19, 0x00	; 0
+ 6d6:	03 c0       	rjmp	.+6      	; 0x6de <lcd_pixel+0x32>
 	//for(j=0;j<7;j++){
 	while(i > 0)
 	{ // Tässä virhe tekee yhen liikaa
 		//merkki = merkki + 1;					
 		
 		merkki = merkki << 1;
- 616:	22 0f       	add	r18, r18
- 618:	33 1f       	adc	r19, r19
+ 6d8:	22 0f       	add	r18, r18
+ 6da:	33 1f       	adc	r19, r19
 		i--;
- 61a:	01 97       	sbiw	r24, 0x01	; 1
+ 6dc:	01 97       	sbiw	r24, 0x01	; 1
 	i_Page = y/8; 	//page numero 0...7
 	y_line = y%8;		//Rivinumero
 	
 	i = y_line;
 	//for(j=0;j<7;j++){
 	while(i > 0)
- 61c:	18 16       	cp	r1, r24
- 61e:	19 06       	cpc	r1, r25
- 620:	d4 f3       	brlt	.-12     	; 0x616 <lcd_pixel+0x2c>
+ 6de:	18 16       	cp	r1, r24
+ 6e0:	19 06       	cpc	r1, r25
+ 6e2:	d4 f3       	brlt	.-12     	; 0x6d8 <lcd_pixel+0x2c>
 		
 		merkki = merkki << 1;
 		i--;
 		
 		}
 	merkki=merkki|lcdCacheData[x][i_Page];
- 622:	8e 01       	movw	r16, r28
- 624:	53 e0       	ldi	r21, 0x03	; 3
- 626:	00 0f       	add	r16, r16
- 628:	11 1f       	adc	r17, r17
- 62a:	5a 95       	dec	r21
- 62c:	e1 f7       	brne	.-8      	; 0x626 <lcd_pixel+0x3c>
- 62e:	0e 0f       	add	r16, r30
- 630:	1f 1f       	adc	r17, r31
- 632:	00 0f       	add	r16, r16
- 634:	11 1f       	adc	r17, r17
- 636:	0e 5f       	subi	r16, 0xFE	; 254
- 638:	1e 4f       	sbci	r17, 0xFE	; 254
- 63a:	d8 01       	movw	r26, r16
- 63c:	ed 90       	ld	r14, X+
- 63e:	fc 90       	ld	r15, X
- 640:	e2 2a       	or	r14, r18
- 642:	f3 2a       	or	r15, r19
+ 6e4:	8e 01       	movw	r16, r28
+ 6e6:	53 e0       	ldi	r21, 0x03	; 3
+ 6e8:	00 0f       	add	r16, r16
+ 6ea:	11 1f       	adc	r17, r17
+ 6ec:	5a 95       	dec	r21
+ 6ee:	e1 f7       	brne	.-8      	; 0x6e8 <lcd_pixel+0x3c>
+ 6f0:	0e 0f       	add	r16, r30
+ 6f2:	1f 1f       	adc	r17, r31
+ 6f4:	00 0f       	add	r16, r16
+ 6f6:	11 1f       	adc	r17, r17
+ 6f8:	0e 5f       	subi	r16, 0xFE	; 254
+ 6fa:	1e 4f       	sbci	r17, 0xFE	; 254
+ 6fc:	d8 01       	movw	r26, r16
+ 6fe:	ed 90       	ld	r14, X+
+ 700:	fc 90       	ld	r15, X
+ 702:	e2 2a       	or	r14, r18
+ 704:	f3 2a       	or	r15, r19
 
 ***********************************************/
 void lcd_goto_xy_exact(unsigned char x, unsigned char y)
 {
 
     lcdCacheIdx = x;
- 644:	c0 93 02 09 	sts	0x0902, r28
- 648:	10 92 03 09 	sts	0x0903, r1
+ 706:	c0 93 02 09 	sts	0x0902, r28
+ 70a:	10 92 03 09 	sts	0x0903, r1
 	lcdCacheIdy = y;
- 64c:	e0 93 00 01 	sts	0x0100, r30
- 650:	10 92 01 01 	sts	0x0101, r1
+ 70e:	e0 93 00 01 	sts	0x0100, r30
+ 712:	10 92 01 01 	sts	0x0101, r1
 	lcd_base_addr();
- 654:	0e 94 bf 02 	call	0x57e	; 0x57e <lcd_base_addr>
+ 716:	0e 94 20 03 	call	0x640	; 0x640 <lcd_base_addr>
 		lcd_send(0x00, LCD_CMD);	// column 0
 
 	}*/
 
 	lcd_goto_xy_exact(x,i_Page);
 	lcd_send(merkki, LCD_DATA);
- 658:	8e 2d       	mov	r24, r14
- 65a:	61 e0       	ldi	r22, 0x01	; 1
- 65c:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
+ 71a:	8e 2d       	mov	r24, r14
+ 71c:	61 e0       	ldi	r22, 0x01	; 1
+ 71e:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
 	lcdCacheData[x][i_Page]=merkki;
- 660:	f8 01       	movw	r30, r16
- 662:	f1 82       	std	Z+1, r15	; 0x01
- 664:	e0 82       	st	Z, r14
+ 722:	f8 01       	movw	r30, r16
+ 724:	f1 82       	std	Z+1, r15	; 0x01
+ 726:	e0 82       	st	Z, r14
 }
- 666:	df 91       	pop	r29
- 668:	cf 91       	pop	r28
- 66a:	1f 91       	pop	r17
- 66c:	0f 91       	pop	r16
- 66e:	ff 90       	pop	r15
- 670:	ef 90       	pop	r14
- 672:	08 95       	ret
+ 728:	df 91       	pop	r29
+ 72a:	cf 91       	pop	r28
+ 72c:	1f 91       	pop	r17
+ 72e:	0f 91       	pop	r16
+ 730:	ff 90       	pop	r15
+ 732:	ef 90       	pop	r14
+ 734:	08 95       	ret
 
-00000674 <lcd_chr>:
+00000736 <lcd_chr>:
 /**********************************************
 Displays a character at current cursor location 
 
 **********************************************/
 void lcd_chr(char chr)
 {
- 674:	0f 93       	push	r16
- 676:	1f 93       	push	r17
- 678:	cf 93       	push	r28
- 67a:	df 93       	push	r29
- 67c:	08 2f       	mov	r16, r24
+ 736:	0f 93       	push	r16
+ 738:	1f 93       	push	r17
+ 73a:	cf 93       	push	r28
+ 73c:	df 93       	push	r29
+ 73e:	08 2f       	mov	r16, r24
 	lcd_base_addr();
- 67e:	0e 94 bf 02 	call	0x57e	; 0x57e <lcd_base_addr>
+ 740:	0e 94 20 03 	call	0x640	; 0x640 <lcd_base_addr>
 
     // 5 pixel wide characters and add space
     for(unsigned char i=0;i<5;i++) {
 		lcd_send(pgm_read_byte(&font5x7[chr-32][i]) << 1, LCD_DATA);
- 682:	85 e0       	ldi	r24, 0x05	; 5
- 684:	08 9f       	mul	r16, r24
- 686:	80 01       	movw	r16, r0
- 688:	11 24       	eor	r1, r1
- 68a:	e8 01       	movw	r28, r16
- 68c:	c4 51       	subi	r28, 0x14	; 20
- 68e:	d0 40       	sbci	r29, 0x00	; 0
+ 744:	85 e0       	ldi	r24, 0x05	; 5
+ 746:	08 9f       	mul	r16, r24
+ 748:	80 01       	movw	r16, r0
+ 74a:	11 24       	eor	r1, r1
+ 74c:	e8 01       	movw	r28, r16
+ 74e:	c4 51       	subi	r28, 0x14	; 20
+ 750:	d0 40       	sbci	r29, 0x00	; 0
 void lcd_chr(char chr)
 {
 	lcd_base_addr();
 
     // 5 pixel wide characters and add space
     for(unsigned char i=0;i<5;i++) {
- 690:	0b 59       	subi	r16, 0x9B	; 155
- 692:	10 40       	sbci	r17, 0x00	; 0
- 694:	04 57       	subi	r16, 0x74	; 116
- 696:	1f 4f       	sbci	r17, 0xFF	; 255
+ 752:	0b 59       	subi	r16, 0x9B	; 155
+ 754:	10 40       	sbci	r17, 0x00	; 0
+ 756:	04 57       	subi	r16, 0x74	; 116
+ 758:	1f 4f       	sbci	r17, 0xFF	; 255
 		lcd_send(pgm_read_byte(&font5x7[chr-32][i]) << 1, LCD_DATA);
- 698:	fe 01       	movw	r30, r28
- 69a:	84 91       	lpm	r24, Z+
- 69c:	88 0f       	add	r24, r24
- 69e:	61 e0       	ldi	r22, 0x01	; 1
- 6a0:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
- 6a4:	21 96       	adiw	r28, 0x01	; 1
+ 75a:	fe 01       	movw	r30, r28
+ 75c:	84 91       	lpm	r24, Z+
+ 75e:	88 0f       	add	r24, r24
+ 760:	61 e0       	ldi	r22, 0x01	; 1
+ 762:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
+ 766:	21 96       	adiw	r28, 0x01	; 1
 void lcd_chr(char chr)
 {
 	lcd_base_addr();
 
     // 5 pixel wide characters and add space
     for(unsigned char i=0;i<5;i++) {
- 6a6:	c0 17       	cp	r28, r16
- 6a8:	d1 07       	cpc	r29, r17
- 6aa:	b1 f7       	brne	.-20     	; 0x698 <lcd_chr+0x24>
+ 768:	c0 17       	cp	r28, r16
+ 76a:	d1 07       	cpc	r29, r17
+ 76c:	b1 f7       	brne	.-20     	; 0x75a <lcd_chr+0x24>
 		lcd_send(pgm_read_byte(&font5x7[chr-32][i]) << 1, LCD_DATA);
     }
 	lcd_send(0, LCD_DATA);
- 6ac:	80 e0       	ldi	r24, 0x00	; 0
- 6ae:	61 e0       	ldi	r22, 0x01	; 1
- 6b0:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
+ 76e:	80 e0       	ldi	r24, 0x00	; 0
+ 770:	61 e0       	ldi	r22, 0x01	; 1
+ 772:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
 	
 	lcdCacheIdx += 6;
- 6b4:	80 91 02 09 	lds	r24, 0x0902
- 6b8:	90 91 03 09 	lds	r25, 0x0903
- 6bc:	06 96       	adiw	r24, 0x06	; 6
- 6be:	90 93 03 09 	sts	0x0903, r25
- 6c2:	80 93 02 09 	sts	0x0902, r24
+ 776:	80 91 02 09 	lds	r24, 0x0902
+ 77a:	90 91 03 09 	lds	r25, 0x0903
+ 77e:	06 96       	adiw	r24, 0x06	; 6
+ 780:	90 93 03 09 	sts	0x0903, r25
+ 784:	80 93 02 09 	sts	0x0902, r24
 }
- 6c6:	df 91       	pop	r29
- 6c8:	cf 91       	pop	r28
- 6ca:	1f 91       	pop	r17
- 6cc:	0f 91       	pop	r16
- 6ce:	08 95       	ret
+ 788:	df 91       	pop	r29
+ 78a:	cf 91       	pop	r28
+ 78c:	1f 91       	pop	r17
+ 78e:	0f 91       	pop	r16
+ 790:	08 95       	ret
 
-000006d0 <lcd_str>:
+00000792 <lcd_str>:
 /***********************************************
 
 Displays string at current cursor location and increment cursor location 
 ***********************************************/
 void lcd_str(char *str)
 {
- 6d0:	cf 93       	push	r28
- 6d2:	df 93       	push	r29
- 6d4:	ec 01       	movw	r28, r24
- 6d6:	03 c0       	rjmp	.+6      	; 0x6de <lcd_str+0xe>
+ 792:	cf 93       	push	r28
+ 794:	df 93       	push	r29
+ 796:	ec 01       	movw	r28, r24
+ 798:	03 c0       	rjmp	.+6      	; 0x7a0 <lcd_str+0xe>
     while(*str) {
         lcd_chr(*str++);
- 6d8:	21 96       	adiw	r28, 0x01	; 1
- 6da:	0e 94 3a 03 	call	0x674	; 0x674 <lcd_chr>
+ 79a:	21 96       	adiw	r28, 0x01	; 1
+ 79c:	0e 94 9b 03 	call	0x736	; 0x736 <lcd_chr>
 
 Displays string at current cursor location and increment cursor location 
 ***********************************************/
 void lcd_str(char *str)
 {
     while(*str) {
- 6de:	88 81       	ld	r24, Y
- 6e0:	88 23       	and	r24, r24
- 6e2:	d1 f7       	brne	.-12     	; 0x6d8 <lcd_str+0x8>
+ 7a0:	88 81       	ld	r24, Y
+ 7a2:	88 23       	and	r24, r24
+ 7a4:	d1 f7       	brne	.-12     	; 0x79a <lcd_str+0x8>
         lcd_chr(*str++);
     }
 }
- 6e4:	df 91       	pop	r29
- 6e6:	cf 91       	pop	r28
- 6e8:	08 95       	ret
+ 7a6:	df 91       	pop	r29
+ 7a8:	cf 91       	pop	r28
+ 7aa:	08 95       	ret
 
-000006ea <lcd_clear>:
+000007ac <lcd_clear>:
 
 
  
 ******************************************/
 void lcd_clear(void)
 {
- 6ea:	ef 92       	push	r14
- 6ec:	ff 92       	push	r15
- 6ee:	0f 93       	push	r16
- 6f0:	1f 93       	push	r17
- 6f2:	cf 93       	push	r28
- 6f4:	df 93       	push	r29
- 6f6:	ee 24       	eor	r14, r14
- 6f8:	ff 24       	eor	r15, r15
+ 7ac:	ef 92       	push	r14
+ 7ae:	ff 92       	push	r15
+ 7b0:	0f 93       	push	r16
+ 7b2:	1f 93       	push	r17
+ 7b4:	cf 93       	push	r28
+ 7b6:	df 93       	push	r29
+ 7b8:	ee 24       	eor	r14, r14
+ 7ba:	ff 24       	eor	r15, r15
 int j,i;
 
 	for(j=0;j<8;j++){
 		lcd_send(0xB0|j, LCD_CMD);	// page j
- 6fa:	8e 2d       	mov	r24, r14
- 6fc:	80 6b       	ori	r24, 0xB0	; 176
- 6fe:	60 e0       	ldi	r22, 0x00	; 0
- 700:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
+ 7bc:	8e 2d       	mov	r24, r14
+ 7be:	80 6b       	ori	r24, 0xB0	; 176
+ 7c0:	60 e0       	ldi	r22, 0x00	; 0
+ 7c2:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
 		lcd_send(0x10, LCD_CMD);
- 704:	80 e1       	ldi	r24, 0x10	; 16
- 706:	60 e0       	ldi	r22, 0x00	; 0
- 708:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
+ 7c6:	80 e1       	ldi	r24, 0x10	; 16
+ 7c8:	60 e0       	ldi	r22, 0x00	; 0
+ 7ca:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
 		lcd_send(0x00, LCD_CMD);	// column 0
- 70c:	80 e0       	ldi	r24, 0x00	; 0
- 70e:	60 e0       	ldi	r22, 0x00	; 0
- 710:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
- 714:	e7 01       	movw	r28, r14
- 716:	cc 0f       	add	r28, r28
- 718:	dd 1f       	adc	r29, r29
- 71a:	ce 5f       	subi	r28, 0xFE	; 254
- 71c:	de 4f       	sbci	r29, 0xFE	; 254
- 71e:	00 e0       	ldi	r16, 0x00	; 0
- 720:	10 e0       	ldi	r17, 0x00	; 0
+ 7ce:	80 e0       	ldi	r24, 0x00	; 0
+ 7d0:	60 e0       	ldi	r22, 0x00	; 0
+ 7d2:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
+ 7d6:	e7 01       	movw	r28, r14
+ 7d8:	cc 0f       	add	r28, r28
+ 7da:	dd 1f       	adc	r29, r29
+ 7dc:	ce 5f       	subi	r28, 0xFE	; 254
+ 7de:	de 4f       	sbci	r29, 0xFE	; 254
+ 7e0:	00 e0       	ldi	r16, 0x00	; 0
+ 7e2:	10 e0       	ldi	r17, 0x00	; 0
 				
 
 		for(i=0;i<128;i++){
 			lcd_send(0x00, LCD_DATA);
- 722:	80 e0       	ldi	r24, 0x00	; 0
- 724:	61 e0       	ldi	r22, 0x01	; 1
- 726:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
+ 7e4:	80 e0       	ldi	r24, 0x00	; 0
+ 7e6:	61 e0       	ldi	r22, 0x01	; 1
+ 7e8:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
 			lcdCacheData[i][j]=0;		
- 72a:	19 82       	std	Y+1, r1	; 0x01
- 72c:	18 82       	st	Y, r1
+ 7ec:	19 82       	std	Y+1, r1	; 0x01
+ 7ee:	18 82       	st	Y, r1
 		lcd_send(0xB0|j, LCD_CMD);	// page j
 		lcd_send(0x10, LCD_CMD);
 		lcd_send(0x00, LCD_CMD);	// column 0
 				
 
 		for(i=0;i<128;i++){
- 72e:	0f 5f       	subi	r16, 0xFF	; 255
- 730:	1f 4f       	sbci	r17, 0xFF	; 255
- 732:	60 96       	adiw	r28, 0x10	; 16
- 734:	00 38       	cpi	r16, 0x80	; 128
- 736:	11 05       	cpc	r17, r1
- 738:	a1 f7       	brne	.-24     	; 0x722 <lcd_clear+0x38>
+ 7f0:	0f 5f       	subi	r16, 0xFF	; 255
+ 7f2:	1f 4f       	sbci	r17, 0xFF	; 255
+ 7f4:	60 96       	adiw	r28, 0x10	; 16
+ 7f6:	00 38       	cpi	r16, 0x80	; 128
+ 7f8:	11 05       	cpc	r17, r1
+ 7fa:	a1 f7       	brne	.-24     	; 0x7e4 <lcd_clear+0x38>
 ******************************************/
 void lcd_clear(void)
 {
 int j,i;
 
 	for(j=0;j<8;j++){
- 73a:	08 94       	sec
- 73c:	e1 1c       	adc	r14, r1
- 73e:	f1 1c       	adc	r15, r1
- 740:	88 e0       	ldi	r24, 0x08	; 8
- 742:	e8 16       	cp	r14, r24
- 744:	f1 04       	cpc	r15, r1
- 746:	c9 f6       	brne	.-78     	; 0x6fa <lcd_clear+0x10>
+ 7fc:	08 94       	sec
+ 7fe:	e1 1c       	adc	r14, r1
+ 800:	f1 1c       	adc	r15, r1
+ 802:	88 e0       	ldi	r24, 0x08	; 8
+ 804:	e8 16       	cp	r14, r24
+ 806:	f1 04       	cpc	r15, r1
+ 808:	c9 f6       	brne	.-78     	; 0x7bc <lcd_clear+0x10>
 			lcd_send(0x00, LCD_DATA);
 			lcdCacheData[i][j]=0;		
 			}			
 	}    
 
 	lcd_send(0xB0, LCD_CMD);	// page 0
- 748:	80 eb       	ldi	r24, 0xB0	; 176
- 74a:	60 e0       	ldi	r22, 0x00	; 0
- 74c:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
+ 80a:	80 eb       	ldi	r24, 0xB0	; 176
+ 80c:	60 e0       	ldi	r22, 0x00	; 0
+ 80e:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
 	lcd_send(0x10, LCD_CMD);
- 750:	80 e1       	ldi	r24, 0x10	; 16
- 752:	60 e0       	ldi	r22, 0x00	; 0
- 754:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
+ 812:	80 e1       	ldi	r24, 0x10	; 16
+ 814:	60 e0       	ldi	r22, 0x00	; 0
+ 816:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
 	lcd_send(0x00, LCD_CMD);	// column 0
- 758:	80 e0       	ldi	r24, 0x00	; 0
- 75a:	60 e0       	ldi	r22, 0x00	; 0
- 75c:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
+ 81a:	80 e0       	ldi	r24, 0x00	; 0
+ 81c:	60 e0       	ldi	r22, 0x00	; 0
+ 81e:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
 
 	lcdCacheIdx = 0;
- 760:	10 92 03 09 	sts	0x0903, r1
- 764:	10 92 02 09 	sts	0x0902, r1
+ 822:	10 92 03 09 	sts	0x0903, r1
+ 826:	10 92 02 09 	sts	0x0902, r1
 	lcdCacheIdy = 0;
- 768:	10 92 01 01 	sts	0x0101, r1
- 76c:	10 92 00 01 	sts	0x0100, r1
+ 82a:	10 92 01 01 	sts	0x0101, r1
+ 82e:	10 92 00 01 	sts	0x0100, r1
 }
- 770:	df 91       	pop	r29
- 772:	cf 91       	pop	r28
- 774:	1f 91       	pop	r17
- 776:	0f 91       	pop	r16
- 778:	ff 90       	pop	r15
- 77a:	ef 90       	pop	r14
- 77c:	08 95       	ret
+ 832:	df 91       	pop	r29
+ 834:	cf 91       	pop	r28
+ 836:	1f 91       	pop	r17
+ 838:	0f 91       	pop	r16
+ 83a:	ff 90       	pop	r15
+ 83c:	ef 90       	pop	r14
+ 83e:	08 95       	ret
 
-0000077e <lcd_contrast>:
+00000840 <lcd_contrast>:
 
 
  
 **********************************************************************/
 void lcd_contrast(unsigned char contrast)
 {
- 77e:	1f 93       	push	r17
- 780:	18 2f       	mov	r17, r24
+ 840:	1f 93       	push	r17
+ 842:	18 2f       	mov	r17, r24
 	lcd_send(0x21, LCD_CMD);				// LCD Extended Commands
- 782:	81 e2       	ldi	r24, 0x21	; 33
- 784:	60 e0       	ldi	r22, 0x00	; 0
- 786:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
+ 844:	81 e2       	ldi	r24, 0x21	; 33
+ 846:	60 e0       	ldi	r22, 0x00	; 0
+ 848:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
     lcd_send(0x80 | contrast, LCD_CMD);		// Set LCD Vop(Contrast)
- 78a:	81 2f       	mov	r24, r17
- 78c:	80 68       	ori	r24, 0x80	; 128
- 78e:	60 e0       	ldi	r22, 0x00	; 0
- 790:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
+ 84c:	81 2f       	mov	r24, r17
+ 84e:	80 68       	ori	r24, 0x80	; 128
+ 850:	60 e0       	ldi	r22, 0x00	; 0
+ 852:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
     lcd_send(0x20, LCD_CMD);				// LCD std cmds, hori addr mode
- 794:	80 e2       	ldi	r24, 0x20	; 32
- 796:	60 e0       	ldi	r22, 0x00	; 0
- 798:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
+ 856:	80 e2       	ldi	r24, 0x20	; 32
+ 858:	60 e0       	ldi	r22, 0x00	; 0
+ 85a:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
 }
- 79c:	1f 91       	pop	r17
- 79e:	08 95       	ret
+ 85e:	1f 91       	pop	r17
+ 860:	08 95       	ret
 
-000007a0 <lcd_init>:
+00000862 <lcd_init>:
 *************************************************************/
 void lcd_init(void)
 {
 	
 	// Pull-up on reset pin
     LCD_PORT |= LCD_RST_PIN;	// Reset = 1
- 7a0:	a8 9a       	sbi	0x15, 0	; 21
+ 862:	a8 9a       	sbi	0x15, 0	; 21
 	
 	// Set output bits on lcd port
 	LCD_DDR |= LCD_RST_PIN | LCD_CE_PIN | LCD_DC_PIN | LCD_DATA_PIN | LCD_CLK_PIN;
- 7a2:	84 b3       	in	r24, 0x14	; 20
- 7a4:	8f 61       	ori	r24, 0x1F	; 31
- 7a6:	84 bb       	out	0x14, r24	; 20
+ 864:	84 b3       	in	r24, 0x14	; 20
+ 866:	8f 61       	ori	r24, 0x1F	; 31
+ 868:	84 bb       	out	0x14, r24	; 20
     milliseconds can be achieved.
  */
 void
 _delay_loop_2(uint16_t __count)
 {
 	__asm__ volatile (
- 7a8:	86 ea       	ldi	r24, 0xA6	; 166
- 7aa:	9e e0       	ldi	r25, 0x0E	; 14
- 7ac:	fc 01       	movw	r30, r24
- 7ae:	31 97       	sbiw	r30, 0x01	; 1
- 7b0:	f1 f7       	brne	.-4      	; 0x7ae <lcd_init+0xe>
+ 86a:	86 ea       	ldi	r24, 0xA6	; 166
+ 86c:	9e e0       	ldi	r25, 0x0E	; 14
+ 86e:	fc 01       	movw	r30, r24
+ 870:	31 97       	sbiw	r30, 0x01	; 1
+ 872:	f1 f7       	brne	.-4      	; 0x870 <lcd_init+0xe>
 
 	// Wait after VCC high for reset (max 30ms)
     _delay_ms(15);
     
     // Toggle display reset pin
     LCD_PORT &= ~LCD_RST_PIN; // Reset = 0
- 7b2:	a8 98       	cbi	0x15, 0	; 21
- 7b4:	fc 01       	movw	r30, r24
- 7b6:	31 97       	sbiw	r30, 0x01	; 1
- 7b8:	f1 f7       	brne	.-4      	; 0x7b6 <lcd_init+0x16>
+ 874:	a8 98       	cbi	0x15, 0	; 21
+ 876:	fc 01       	movw	r30, r24
+ 878:	31 97       	sbiw	r30, 0x01	; 1
+ 87a:	f1 f7       	brne	.-4      	; 0x878 <lcd_init+0x16>
 	_delay_ms(15);
     LCD_PORT |= LCD_RST_PIN;	// Reset = 1
- 7ba:	a8 9a       	sbi	0x15, 0	; 21
- 7bc:	01 97       	sbiw	r24, 0x01	; 1
- 7be:	f1 f7       	brne	.-4      	; 0x7bc <lcd_init+0x1c>
+ 87c:	a8 9a       	sbi	0x15, 0	; 21
+ 87e:	01 97       	sbiw	r24, 0x01	; 1
+ 880:	f1 f7       	brne	.-4      	; 0x87e <lcd_init+0x1c>
 
 	_delay_ms(15);
 
     // Disable LCD controller
     LCD_PORT |= LCD_CE_PIN;
- 7c0:	a9 9a       	sbi	0x15, 1	; 21
+ 882:	a9 9a       	sbi	0x15, 1	; 21
 
     lcd_send(0xEB, LCD_CMD);  	// LCD bias 
- 7c2:	8b ee       	ldi	r24, 0xEB	; 235
- 7c4:	60 e0       	ldi	r22, 0x00	; 0
- 7c6:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
+ 884:	8b ee       	ldi	r24, 0xEB	; 235
+ 886:	60 e0       	ldi	r22, 0x00	; 0
+ 888:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
     lcd_send(0x23, LCD_CMD);  	// Set Lines >> 23 = 64
- 7ca:	83 e2       	ldi	r24, 0x23	; 35
- 7cc:	60 e0       	ldi	r22, 0x00	; 0
- 7ce:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
+ 88c:	83 e2       	ldi	r24, 0x23	; 35
+ 88e:	60 e0       	ldi	r22, 0x00	; 0
+ 890:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
     lcd_send(0x81, LCD_CMD);	// Set Potentiometer
- 7d2:	81 e8       	ldi	r24, 0x81	; 129
- 7d4:	60 e0       	ldi	r22, 0x00	; 0
- 7d6:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
+ 894:	81 e8       	ldi	r24, 0x81	; 129
+ 896:	60 e0       	ldi	r22, 0x00	; 0
+ 898:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
 	lcd_send(0x64, LCD_CMD);	// 16 >> 64 (Tummuus)
- 7da:	84 e6       	ldi	r24, 0x64	; 100
- 7dc:	60 e0       	ldi	r22, 0x00	; 0
- 7de:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
+ 89c:	84 e6       	ldi	r24, 0x64	; 100
+ 89e:	60 e0       	ldi	r22, 0x00	; 0
+ 8a0:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
 	lcd_send(0xAF, LCD_CMD);  	// Set Display ON
- 7e2:	8f ea       	ldi	r24, 0xAF	; 175
- 7e4:	60 e0       	ldi	r22, 0x00	; 0
- 7e6:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
+ 8a4:	8f ea       	ldi	r24, 0xAF	; 175
+ 8a6:	60 e0       	ldi	r22, 0x00	; 0
+ 8a8:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
     lcd_send(0xCC, LCD_CMD);  	// Set LCD to RAM mapping
- 7ea:	8c ec       	ldi	r24, 0xCC	; 204
- 7ec:	60 e0       	ldi	r22, 0x00	; 0
- 7ee:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
+ 8ac:	8c ec       	ldi	r24, 0xCC	; 204
+ 8ae:	60 e0       	ldi	r22, 0x00	; 0
+ 8b0:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
 	
 	
 	//cd_send(0xA5, LCD_CMD);  // All pixel ON TESTIÄ
     
     // Clear lcd
     lcd_clear();
- 7f2:	0e 94 75 03 	call	0x6ea	; 0x6ea <lcd_clear>
+ 8b4:	0e 94 d6 03 	call	0x7ac	; 0x7ac <lcd_clear>
 	
 	// For using printf
 	//fdevopen(lcd_chr, 0);
 }
- 7f6:	08 95       	ret
+ 8b8:	08 95       	ret
 
-000007f8 <lcd_Line_vert>:
+000008ba <lcd_Line_vert>:
 Kajak/MarkkuK 23.10-12
 
 Vaatii testausta proto!
 *************************************************/
 void lcd_Line_vert(int x_Start, int y_Start, int Lenght)
 {
- 7f8:	df 92       	push	r13
- 7fa:	ef 92       	push	r14
- 7fc:	ff 92       	push	r15
- 7fe:	0f 93       	push	r16
- 800:	1f 93       	push	r17
- 802:	cf 93       	push	r28
- 804:	df 93       	push	r29
- 806:	d8 2e       	mov	r13, r24
- 808:	fb 01       	movw	r30, r22
- 80a:	7a 01       	movw	r14, r20
+ 8ba:	df 92       	push	r13
+ 8bc:	ef 92       	push	r14
+ 8be:	ff 92       	push	r15
+ 8c0:	0f 93       	push	r16
+ 8c2:	1f 93       	push	r17
+ 8c4:	cf 93       	push	r28
+ 8c6:	df 93       	push	r29
+ 8c8:	d8 2e       	mov	r13, r24
+ 8ca:	fb 01       	movw	r30, r22
+ 8cc:	7a 01       	movw	r14, r20
 int j;
 int i_Page;
 int y_line = 0;
 
 	i_Page = y_Start/7; 	//page numero 0...7
 	y_line = y_Start%7;	//Rivinumero
- 80c:	cb 01       	movw	r24, r22
- 80e:	67 e0       	ldi	r22, 0x07	; 7
- 810:	70 e0       	ldi	r23, 0x00	; 0
- 812:	0e 94 af 04 	call	0x95e	; 0x95e <__divmodhi4>
+ 8ce:	cb 01       	movw	r24, r22
+ 8d0:	67 e0       	ldi	r22, 0x07	; 7
+ 8d2:	70 e0       	ldi	r23, 0x00	; 0
+ 8d4:	0e 94 10 05 	call	0xa20	; 0xa20 <__divmodhi4>
 
 	if(y_line == 0){
- 816:	00 97       	sbiw	r24, 0x00	; 0
- 818:	19 f4       	brne	.+6      	; 0x820 <lcd_Line_vert+0x28>
- 81a:	01 e0       	ldi	r16, 0x01	; 1
- 81c:	10 e0       	ldi	r17, 0x00	; 0
- 81e:	07 c0       	rjmp	.+14     	; 0x82e <lcd_Line_vert+0x36>
+ 8d8:	00 97       	sbiw	r24, 0x00	; 0
+ 8da:	19 f4       	brne	.+6      	; 0x8e2 <lcd_Line_vert+0x28>
+ 8dc:	01 e0       	ldi	r16, 0x01	; 1
+ 8de:	10 e0       	ldi	r17, 0x00	; 0
+ 8e0:	07 c0       	rjmp	.+14     	; 0x8f0 <lcd_Line_vert+0x36>
 		y_line = 1;
 	}
 	else{
 		j=1;
 		j=j<<y_line;
- 820:	01 e0       	ldi	r16, 0x01	; 1
- 822:	10 e0       	ldi	r17, 0x00	; 0
- 824:	02 c0       	rjmp	.+4      	; 0x82a <lcd_Line_vert+0x32>
- 826:	00 0f       	add	r16, r16
- 828:	11 1f       	adc	r17, r17
- 82a:	8a 95       	dec	r24
- 82c:	e2 f7       	brpl	.-8      	; 0x826 <lcd_Line_vert+0x2e>
+ 8e2:	01 e0       	ldi	r16, 0x01	; 1
+ 8e4:	10 e0       	ldi	r17, 0x00	; 0
+ 8e6:	02 c0       	rjmp	.+4      	; 0x8ec <lcd_Line_vert+0x32>
+ 8e8:	00 0f       	add	r16, r16
+ 8ea:	11 1f       	adc	r17, r17
+ 8ec:	8a 95       	dec	r24
+ 8ee:	e2 f7       	brpl	.-8      	; 0x8e8 <lcd_Line_vert+0x2e>
 		y_line = j;				
 	}	
 	//lcd_goto_xy_exact((unsigned char) x_Start-1,(unsigned char) i_Page);
 	
 	lcd_send(0xB0|i_Page, LCD_CMD);	// Sivu(page) = i_Page
- 82e:	cf 01       	movw	r24, r30
- 830:	67 e0       	ldi	r22, 0x07	; 7
- 832:	70 e0       	ldi	r23, 0x00	; 0
- 834:	0e 94 af 04 	call	0x95e	; 0x95e <__divmodhi4>
- 838:	86 2f       	mov	r24, r22
- 83a:	80 6b       	ori	r24, 0xB0	; 176
- 83c:	60 e0       	ldi	r22, 0x00	; 0
- 83e:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
+ 8f0:	cf 01       	movw	r24, r30
+ 8f2:	67 e0       	ldi	r22, 0x07	; 7
+ 8f4:	70 e0       	ldi	r23, 0x00	; 0
+ 8f6:	0e 94 10 05 	call	0xa20	; 0xa20 <__divmodhi4>
+ 8fa:	86 2f       	mov	r24, r22
+ 8fc:	80 6b       	ori	r24, 0xB0	; 176
+ 8fe:	60 e0       	ldi	r22, 0x00	; 0
+ 900:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
 	lcd_send(0x10, LCD_CMD);
- 842:	80 e1       	ldi	r24, 0x10	; 16
- 844:	60 e0       	ldi	r22, 0x00	; 0
- 846:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
+ 904:	80 e1       	ldi	r24, 0x10	; 16
+ 906:	60 e0       	ldi	r22, 0x00	; 0
+ 908:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
  	lcd_send(x_Start, LCD_CMD);	// Sarake(column) 
- 84a:	8d 2d       	mov	r24, r13
- 84c:	60 e0       	ldi	r22, 0x00	; 0
- 84e:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
- 852:	c0 e0       	ldi	r28, 0x00	; 0
- 854:	d0 e0       	ldi	r29, 0x00	; 0
- 856:	05 c0       	rjmp	.+10     	; 0x862 <lcd_Line_vert+0x6a>
+ 90c:	8d 2d       	mov	r24, r13
+ 90e:	60 e0       	ldi	r22, 0x00	; 0
+ 910:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
+ 914:	c0 e0       	ldi	r28, 0x00	; 0
+ 916:	d0 e0       	ldi	r29, 0x00	; 0
+ 918:	05 c0       	rjmp	.+10     	; 0x924 <lcd_Line_vert+0x6a>
 	
 	for(j=0;j<Lenght;j++)	
 			lcd_send(y_line, LCD_DATA);
- 858:	80 2f       	mov	r24, r16
- 85a:	61 e0       	ldi	r22, 0x01	; 1
- 85c:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
+ 91a:	80 2f       	mov	r24, r16
+ 91c:	61 e0       	ldi	r22, 0x01	; 1
+ 91e:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
 	
 	lcd_send(0xB0|i_Page, LCD_CMD);	// Sivu(page) = i_Page
 	lcd_send(0x10, LCD_CMD);
  	lcd_send(x_Start, LCD_CMD);	// Sarake(column) 
 	
 	for(j=0;j<Lenght;j++)	
- 860:	21 96       	adiw	r28, 0x01	; 1
- 862:	ce 15       	cp	r28, r14
- 864:	df 05       	cpc	r29, r15
- 866:	c4 f3       	brlt	.-16     	; 0x858 <lcd_Line_vert+0x60>
+ 922:	21 96       	adiw	r28, 0x01	; 1
+ 924:	ce 15       	cp	r28, r14
+ 926:	df 05       	cpc	r29, r15
+ 928:	c4 f3       	brlt	.-16     	; 0x91a <lcd_Line_vert+0x60>
 			lcd_send(y_line, LCD_DATA);
 }
- 868:	df 91       	pop	r29
- 86a:	cf 91       	pop	r28
- 86c:	1f 91       	pop	r17
- 86e:	0f 91       	pop	r16
- 870:	ff 90       	pop	r15
- 872:	ef 90       	pop	r14
- 874:	df 90       	pop	r13
- 876:	08 95       	ret
+ 92a:	df 91       	pop	r29
+ 92c:	cf 91       	pop	r28
+ 92e:	1f 91       	pop	r17
+ 930:	0f 91       	pop	r16
+ 932:	ff 90       	pop	r15
+ 934:	ef 90       	pop	r14
+ 936:	df 90       	pop	r13
+ 938:	08 95       	ret
 
-00000878 <lcd_Line_Hor>:
+0000093a <lcd_Line_Hor>:
 Kajak/MarkkuK 30.10-12
 
 Ei toiminnassa Vaatii koodausta!
 *************************************************/
 void lcd_Line_Hor(int x_Start, int y_Start, int Lenght)
 {
- 878:	6f 92       	push	r6
- 87a:	7f 92       	push	r7
- 87c:	8f 92       	push	r8
- 87e:	9f 92       	push	r9
- 880:	af 92       	push	r10
- 882:	bf 92       	push	r11
- 884:	cf 92       	push	r12
- 886:	df 92       	push	r13
- 888:	ef 92       	push	r14
- 88a:	ff 92       	push	r15
- 88c:	0f 93       	push	r16
- 88e:	1f 93       	push	r17
- 890:	cf 93       	push	r28
- 892:	df 93       	push	r29
- 894:	3c 01       	movw	r6, r24
- 896:	eb 01       	movw	r28, r22
- 898:	5a 01       	movw	r10, r20
+ 93a:	6f 92       	push	r6
+ 93c:	7f 92       	push	r7
+ 93e:	8f 92       	push	r8
+ 940:	9f 92       	push	r9
+ 942:	af 92       	push	r10
+ 944:	bf 92       	push	r11
+ 946:	cf 92       	push	r12
+ 948:	df 92       	push	r13
+ 94a:	ef 92       	push	r14
+ 94c:	ff 92       	push	r15
+ 94e:	0f 93       	push	r16
+ 950:	1f 93       	push	r17
+ 952:	cf 93       	push	r28
+ 954:	df 93       	push	r29
+ 956:	3c 01       	movw	r6, r24
+ 958:	eb 01       	movw	r28, r22
+ 95a:	5a 01       	movw	r10, r20
 int y_line = 0;
 int merkki = 0;
 
 
 	i_Page = y_Start/7; 	//page numero 0...7
 	y_line = y_Start%7;		//Rivinumero
- 89a:	cb 01       	movw	r24, r22
- 89c:	67 e0       	ldi	r22, 0x07	; 7
- 89e:	70 e0       	ldi	r23, 0x00	; 0
- 8a0:	0e 94 af 04 	call	0x95e	; 0x95e <__divmodhi4>
- 8a4:	7c 01       	movw	r14, r24
- 8a6:	e0 e0       	ldi	r30, 0x00	; 0
- 8a8:	f0 e0       	ldi	r31, 0x00	; 0
+ 95c:	cb 01       	movw	r24, r22
+ 95e:	67 e0       	ldi	r22, 0x07	; 7
+ 960:	70 e0       	ldi	r23, 0x00	; 0
+ 962:	0e 94 10 05 	call	0xa20	; 0xa20 <__divmodhi4>
+ 966:	7c 01       	movw	r14, r24
+ 968:	e0 e0       	ldi	r30, 0x00	; 0
+ 96a:	f0 e0       	ldi	r31, 0x00	; 0
 	
 	i = y_line;
 	for(j=0;j<7;j++){
- 8aa:	97 01       	movw	r18, r14
- 8ac:	26 50       	subi	r18, 0x06	; 6
- 8ae:	30 40       	sbci	r19, 0x00	; 0
+ 96c:	97 01       	movw	r18, r14
+ 96e:	26 50       	subi	r18, 0x06	; 6
+ 970:	30 40       	sbci	r19, 0x00	; 0
 			if(i >= 0 ){ // Tässä virhe tekee yhen liikaa
- 8b0:	97 ff       	sbrs	r25, 7
+ 972:	97 ff       	sbrs	r25, 7
 				merkki = merkki + 1;					
- 8b2:	31 96       	adiw	r30, 0x01	; 1
+ 974:	31 96       	adiw	r30, 0x01	; 1
 			}
 			merkki = merkki << 1;
- 8b4:	ee 0f       	add	r30, r30
- 8b6:	ff 1f       	adc	r31, r31
+ 976:	ee 0f       	add	r30, r30
+ 978:	ff 1f       	adc	r31, r31
 
 	i_Page = y_Start/7; 	//page numero 0...7
 	y_line = y_Start%7;		//Rivinumero
 	
 	i = y_line;
 	for(j=0;j<7;j++){
- 8b8:	82 17       	cp	r24, r18
- 8ba:	93 07       	cpc	r25, r19
- 8bc:	11 f0       	breq	.+4      	; 0x8c2 <lcd_Line_Hor+0x4a>
+ 97a:	82 17       	cp	r24, r18
+ 97c:	93 07       	cpc	r25, r19
+ 97e:	11 f0       	breq	.+4      	; 0x984 <lcd_Line_Hor+0x4a>
 			if(i >= 0 ){ // Tässä virhe tekee yhen liikaa
 				merkki = merkki + 1;					
 			}
 			merkki = merkki << 1;
 			i--;
- 8be:	01 97       	sbiw	r24, 0x01	; 1
- 8c0:	f7 cf       	rjmp	.-18     	; 0x8b0 <lcd_Line_Hor+0x38>
+ 980:	01 97       	sbiw	r24, 0x01	; 1
+ 982:	f7 cf       	rjmp	.-18     	; 0x972 <lcd_Line_Hor+0x38>
 int i_Page;
 int y_line = 0;
 int merkki = 0;
 
 
 	i_Page = y_Start/7; 	//page numero 0...7
- 8c2:	ce 01       	movw	r24, r28
- 8c4:	67 e0       	ldi	r22, 0x07	; 7
- 8c6:	70 e0       	ldi	r23, 0x00	; 0
- 8c8:	0e 94 af 04 	call	0x95e	; 0x95e <__divmodhi4>
- 8cc:	6b 01       	movw	r12, r22
+ 984:	ce 01       	movw	r24, r28
+ 986:	67 e0       	ldi	r22, 0x07	; 7
+ 988:	70 e0       	ldi	r23, 0x00	; 0
+ 98a:	0e 94 10 05 	call	0xa20	; 0xa20 <__divmodhi4>
+ 98e:	6b 01       	movw	r12, r22
 			}
 			merkki = merkki << 1;
 			i--;
 		
 		}
 	merkki = merkki << 1; // Korjaa yhde liika merkin
- 8ce:	4f 01       	movw	r8, r30
- 8d0:	88 0c       	add	r8, r8
- 8d2:	99 1c       	adc	r9, r9
- 8d4:	30 c0       	rjmp	.+96     	; 0x936 <lcd_Line_Hor+0xbe>
+ 990:	4f 01       	movw	r8, r30
+ 992:	88 0c       	add	r8, r8
+ 994:	99 1c       	adc	r9, r9
+ 996:	30 c0       	rjmp	.+96     	; 0x9f8 <lcd_Line_Hor+0xbe>
 
 	while(Lenght != 0){
 		for(j=i_Page;j<8;j++){
 			lcd_send(0xB0|j, LCD_CMD);	// page j
- 8d6:	80 2f       	mov	r24, r16
- 8d8:	80 6b       	ori	r24, 0xB0	; 176
- 8da:	60 e0       	ldi	r22, 0x00	; 0
- 8dc:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
+ 998:	80 2f       	mov	r24, r16
+ 99a:	80 6b       	ori	r24, 0xB0	; 176
+ 99c:	60 e0       	ldi	r22, 0x00	; 0
+ 99e:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
 			lcd_send(0x10, LCD_CMD);
- 8e0:	80 e1       	ldi	r24, 0x10	; 16
- 8e2:	60 e0       	ldi	r22, 0x00	; 0
- 8e4:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
+ 9a2:	80 e1       	ldi	r24, 0x10	; 16
+ 9a4:	60 e0       	ldi	r22, 0x00	; 0
+ 9a6:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
 			lcd_send(0x00, LCD_CMD);	// column 0
- 8e8:	80 e0       	ldi	r24, 0x00	; 0
- 8ea:	60 e0       	ldi	r22, 0x00	; 0
- 8ec:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
- 8f0:	c0 e0       	ldi	r28, 0x00	; 0
- 8f2:	d0 e0       	ldi	r29, 0x00	; 0
+ 9aa:	80 e0       	ldi	r24, 0x00	; 0
+ 9ac:	60 e0       	ldi	r22, 0x00	; 0
+ 9ae:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
+ 9b2:	c0 e0       	ldi	r28, 0x00	; 0
+ 9b4:	d0 e0       	ldi	r29, 0x00	; 0
 
 			for(i=0;i<128;i++){
 				if(i == x_Start){
- 8f4:	c6 15       	cp	r28, r6
- 8f6:	d7 05       	cpc	r29, r7
- 8f8:	89 f4       	brne	.+34     	; 0x91c <lcd_Line_Hor+0xa4>
+ 9b6:	c6 15       	cp	r28, r6
+ 9b8:	d7 05       	cpc	r29, r7
+ 9ba:	89 f4       	brne	.+34     	; 0x9de <lcd_Line_Hor+0xa4>
 					lcd_send(merkki, LCD_DATA); // Pystyviiva
- 8fa:	88 2d       	mov	r24, r8
- 8fc:	61 e0       	ldi	r22, 0x01	; 1
- 8fe:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
+ 9bc:	88 2d       	mov	r24, r8
+ 9be:	61 e0       	ldi	r22, 0x01	; 1
+ 9c0:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
 					i = 129;
 					j = 10; // Viivatulostettu
 					Lenght = Lenght - y_line;
- 902:	ae 18       	sub	r10, r14
- 904:	bf 08       	sbc	r11, r15
+ 9c4:	ae 18       	sub	r10, r14
+ 9c6:	bf 08       	sbc	r11, r15
 					i_Page++; // Vaihda sivua
- 906:	08 94       	sec
- 908:	c1 1c       	adc	r12, r1
- 90a:	d1 1c       	adc	r13, r1
- 90c:	0a e0       	ldi	r16, 0x0A	; 10
- 90e:	10 e0       	ldi	r17, 0x00	; 0
- 910:	c1 e8       	ldi	r28, 0x81	; 129
- 912:	d0 e0       	ldi	r29, 0x00	; 0
- 914:	ef ef       	ldi	r30, 0xFF	; 255
- 916:	8e 2e       	mov	r8, r30
- 918:	91 2c       	mov	r9, r1
- 91a:	04 c0       	rjmp	.+8      	; 0x924 <lcd_Line_Hor+0xac>
+ 9c8:	08 94       	sec
+ 9ca:	c1 1c       	adc	r12, r1
+ 9cc:	d1 1c       	adc	r13, r1
+ 9ce:	0a e0       	ldi	r16, 0x0A	; 10
+ 9d0:	10 e0       	ldi	r17, 0x00	; 0
+ 9d2:	c1 e8       	ldi	r28, 0x81	; 129
+ 9d4:	d0 e0       	ldi	r29, 0x00	; 0
+ 9d6:	ef ef       	ldi	r30, 0xFF	; 255
+ 9d8:	8e 2e       	mov	r8, r30
+ 9da:	91 2c       	mov	r9, r1
+ 9dc:	04 c0       	rjmp	.+8      	; 0x9e6 <lcd_Line_Hor+0xac>
 					merkki = 0xFF;
 					
 				}
 				else lcd_send(0x00, LCD_DATA); // Plankkoviiva
- 91c:	80 e0       	ldi	r24, 0x00	; 0
- 91e:	61 e0       	ldi	r22, 0x01	; 1
- 920:	0e 94 95 02 	call	0x52a	; 0x52a <lcd_send>
+ 9de:	80 e0       	ldi	r24, 0x00	; 0
+ 9e0:	61 e0       	ldi	r22, 0x01	; 1
+ 9e2:	0e 94 f6 02 	call	0x5ec	; 0x5ec <lcd_send>
 		for(j=i_Page;j<8;j++){
 			lcd_send(0xB0|j, LCD_CMD);	// page j
 			lcd_send(0x10, LCD_CMD);
 			lcd_send(0x00, LCD_CMD);	// column 0
 
 			for(i=0;i<128;i++){
- 924:	21 96       	adiw	r28, 0x01	; 1
- 926:	c0 38       	cpi	r28, 0x80	; 128
- 928:	d1 05       	cpc	r29, r1
- 92a:	24 f3       	brlt	.-56     	; 0x8f4 <lcd_Line_Hor+0x7c>
+ 9e6:	21 96       	adiw	r28, 0x01	; 1
+ 9e8:	c0 38       	cpi	r28, 0x80	; 128
+ 9ea:	d1 05       	cpc	r29, r1
+ 9ec:	24 f3       	brlt	.-56     	; 0x9b6 <lcd_Line_Hor+0x7c>
 		
 		}
 	merkki = merkki << 1; // Korjaa yhde liika merkin
 
 	while(Lenght != 0){
 		for(j=i_Page;j<8;j++){
- 92c:	0f 5f       	subi	r16, 0xFF	; 255
- 92e:	1f 4f       	sbci	r17, 0xFF	; 255
- 930:	08 30       	cpi	r16, 0x08	; 8
- 932:	11 05       	cpc	r17, r1
- 934:	84 f2       	brlt	.-96     	; 0x8d6 <lcd_Line_Hor+0x5e>
+ 9ee:	0f 5f       	subi	r16, 0xFF	; 255
+ 9f0:	1f 4f       	sbci	r17, 0xFF	; 255
+ 9f2:	08 30       	cpi	r16, 0x08	; 8
+ 9f4:	11 05       	cpc	r17, r1
+ 9f6:	84 f2       	brlt	.-96     	; 0x998 <lcd_Line_Hor+0x5e>
 			i--;
 		
 		}
 	merkki = merkki << 1; // Korjaa yhde liika merkin
 
 	while(Lenght != 0){
- 936:	a1 14       	cp	r10, r1
- 938:	b1 04       	cpc	r11, r1
- 93a:	11 f0       	breq	.+4      	; 0x940 <lcd_Line_Hor+0xc8>
- 93c:	86 01       	movw	r16, r12
- 93e:	f8 cf       	rjmp	.-16     	; 0x930 <lcd_Line_Hor+0xb8>
+ 9f8:	a1 14       	cp	r10, r1
+ 9fa:	b1 04       	cpc	r11, r1
+ 9fc:	11 f0       	breq	.+4      	; 0xa02 <lcd_Line_Hor+0xc8>
+ 9fe:	86 01       	movw	r16, r12
+ a00:	f8 cf       	rjmp	.-16     	; 0x9f2 <lcd_Line_Hor+0xb8>
 				}
 				else lcd_send(0x00, LCD_DATA); // Plankkoviiva
 			}
 		}
 	}
 }
- 940:	df 91       	pop	r29
- 942:	cf 91       	pop	r28
- 944:	1f 91       	pop	r17
- 946:	0f 91       	pop	r16
- 948:	ff 90       	pop	r15
- 94a:	ef 90       	pop	r14
- 94c:	df 90       	pop	r13
- 94e:	cf 90       	pop	r12
- 950:	bf 90       	pop	r11
- 952:	af 90       	pop	r10
- 954:	9f 90       	pop	r9
- 956:	8f 90       	pop	r8
- 958:	7f 90       	pop	r7
- 95a:	6f 90       	pop	r6
- 95c:	08 95       	ret
+ a02:	df 91       	pop	r29
+ a04:	cf 91       	pop	r28
+ a06:	1f 91       	pop	r17
+ a08:	0f 91       	pop	r16
+ a0a:	ff 90       	pop	r15
+ a0c:	ef 90       	pop	r14
+ a0e:	df 90       	pop	r13
+ a10:	cf 90       	pop	r12
+ a12:	bf 90       	pop	r11
+ a14:	af 90       	pop	r10
+ a16:	9f 90       	pop	r9
+ a18:	8f 90       	pop	r8
+ a1a:	7f 90       	pop	r7
+ a1c:	6f 90       	pop	r6
+ a1e:	08 95       	ret
 
-0000095e <__divmodhi4>:
- 95e:	97 fb       	bst	r25, 7
- 960:	09 2e       	mov	r0, r25
- 962:	07 26       	eor	r0, r23
- 964:	0a d0       	rcall	.+20     	; 0x97a <__divmodhi4_neg1>
- 966:	77 fd       	sbrc	r23, 7
- 968:	04 d0       	rcall	.+8      	; 0x972 <__divmodhi4_neg2>
- 96a:	0c d0       	rcall	.+24     	; 0x984 <__udivmodhi4>
- 96c:	06 d0       	rcall	.+12     	; 0x97a <__divmodhi4_neg1>
- 96e:	00 20       	and	r0, r0
- 970:	1a f4       	brpl	.+6      	; 0x978 <__divmodhi4_exit>
+00000a20 <__divmodhi4>:
+ a20:	97 fb       	bst	r25, 7
+ a22:	09 2e       	mov	r0, r25
+ a24:	07 26       	eor	r0, r23
+ a26:	0a d0       	rcall	.+20     	; 0xa3c <__divmodhi4_neg1>
+ a28:	77 fd       	sbrc	r23, 7
+ a2a:	04 d0       	rcall	.+8      	; 0xa34 <__divmodhi4_neg2>
+ a2c:	0c d0       	rcall	.+24     	; 0xa46 <__udivmodhi4>
+ a2e:	06 d0       	rcall	.+12     	; 0xa3c <__divmodhi4_neg1>
+ a30:	00 20       	and	r0, r0
+ a32:	1a f4       	brpl	.+6      	; 0xa3a <__divmodhi4_exit>
 
-00000972 <__divmodhi4_neg2>:
- 972:	70 95       	com	r23
- 974:	61 95       	neg	r22
- 976:	7f 4f       	sbci	r23, 0xFF	; 255
+00000a34 <__divmodhi4_neg2>:
+ a34:	70 95       	com	r23
+ a36:	61 95       	neg	r22
+ a38:	7f 4f       	sbci	r23, 0xFF	; 255
 
-00000978 <__divmodhi4_exit>:
- 978:	08 95       	ret
+00000a3a <__divmodhi4_exit>:
+ a3a:	08 95       	ret
 
-0000097a <__divmodhi4_neg1>:
- 97a:	f6 f7       	brtc	.-4      	; 0x978 <__divmodhi4_exit>
- 97c:	90 95       	com	r25
- 97e:	81 95       	neg	r24
- 980:	9f 4f       	sbci	r25, 0xFF	; 255
- 982:	08 95       	ret
+00000a3c <__divmodhi4_neg1>:
+ a3c:	f6 f7       	brtc	.-4      	; 0xa3a <__divmodhi4_exit>
+ a3e:	90 95       	com	r25
+ a40:	81 95       	neg	r24
+ a42:	9f 4f       	sbci	r25, 0xFF	; 255
+ a44:	08 95       	ret
 
-00000984 <__udivmodhi4>:
- 984:	aa 1b       	sub	r26, r26
- 986:	bb 1b       	sub	r27, r27
- 988:	51 e1       	ldi	r21, 0x11	; 17
- 98a:	07 c0       	rjmp	.+14     	; 0x99a <__udivmodhi4_ep>
+00000a46 <__udivmodhi4>:
+ a46:	aa 1b       	sub	r26, r26
+ a48:	bb 1b       	sub	r27, r27
+ a4a:	51 e1       	ldi	r21, 0x11	; 17
+ a4c:	07 c0       	rjmp	.+14     	; 0xa5c <__udivmodhi4_ep>
 
-0000098c <__udivmodhi4_loop>:
- 98c:	aa 1f       	adc	r26, r26
- 98e:	bb 1f       	adc	r27, r27
- 990:	a6 17       	cp	r26, r22
- 992:	b7 07       	cpc	r27, r23
- 994:	10 f0       	brcs	.+4      	; 0x99a <__udivmodhi4_ep>
- 996:	a6 1b       	sub	r26, r22
- 998:	b7 0b       	sbc	r27, r23
+00000a4e <__udivmodhi4_loop>:
+ a4e:	aa 1f       	adc	r26, r26
+ a50:	bb 1f       	adc	r27, r27
+ a52:	a6 17       	cp	r26, r22
+ a54:	b7 07       	cpc	r27, r23
+ a56:	10 f0       	brcs	.+4      	; 0xa5c <__udivmodhi4_ep>
+ a58:	a6 1b       	sub	r26, r22
+ a5a:	b7 0b       	sbc	r27, r23
 
-0000099a <__udivmodhi4_ep>:
- 99a:	88 1f       	adc	r24, r24
- 99c:	99 1f       	adc	r25, r25
- 99e:	5a 95       	dec	r21
- 9a0:	a9 f7       	brne	.-22     	; 0x98c <__udivmodhi4_loop>
- 9a2:	80 95       	com	r24
- 9a4:	90 95       	com	r25
- 9a6:	bc 01       	movw	r22, r24
- 9a8:	cd 01       	movw	r24, r26
- 9aa:	08 95       	ret
+00000a5c <__udivmodhi4_ep>:
+ a5c:	88 1f       	adc	r24, r24
+ a5e:	99 1f       	adc	r25, r25
+ a60:	5a 95       	dec	r21
+ a62:	a9 f7       	brne	.-22     	; 0xa4e <__udivmodhi4_loop>
+ a64:	80 95       	com	r24
+ a66:	90 95       	com	r25
+ a68:	bc 01       	movw	r22, r24
+ a6a:	cd 01       	movw	r24, r26
+ a6c:	08 95       	ret
 
-000009ac <_exit>:
- 9ac:	f8 94       	cli
+00000a6e <_exit>:
+ a6e:	f8 94       	cli
 
-000009ae <__stop_program>:
- 9ae:	ff cf       	rjmp	.-2      	; 0x9ae <__stop_program>
+00000a70 <__stop_program>:
+ a70:	ff cf       	rjmp	.-2      	; 0xa70 <__stop_program>

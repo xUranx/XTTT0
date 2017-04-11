@@ -37,17 +37,22 @@ HEX_EEPROM_FLAGS += --change-section-lma .eeprom=0 --no-change-warnings
 
 
 ## Objects that must be built in order to link
-OBJECTS = Harj9.o lcd.o 
+OBJECTS = Harj9.o lcd.o printhex.o 
 
 ## Objects explicitly added by the user
 LINKONLYOBJECTS = 
 
 ## Build
-all: $(TARGET) Harj9.hex Harj9.eep Harj9.lss## Compile
+all: $(TARGET) Harj9.hex Harj9.eep Harj9.lss size
+
+## Compile
 Harj9.o: ../Harj9.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
 lcd.o: ../lcd.c
+	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
+
+printhex.o: ../printhex.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
 ##Link
@@ -62,6 +67,10 @@ $(TARGET): $(OBJECTS)
 
 %.lss: $(TARGET)
 	avr-objdump -h -S $< > $@
+
+size: ${TARGET}
+	@echo
+	@avr-size -C --mcu=${MCU} ${TARGET}
 
 ## Clean target
 .PHONY: clean
