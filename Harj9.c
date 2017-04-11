@@ -2,7 +2,20 @@
 #define false	0
 #define	NB_SHOTS	5
 #define STEP_MAX	1
-
+#define true 1
+typedef int bool;
+typedef int type;
+#define circleRad 69
+#define cross 5
+#define circle 6
+#define height 64
+#define lenght 128
+#define crossLenght 14
+#define horizontal 1
+#define vertical 2
+#define crossUP 3
+#define crossDOWN 4
+#define false 0
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <util/delay.h>
@@ -16,6 +29,54 @@
  main 
 
  *******************************/
+ struct Positions {
+   int  crosses[50];
+   int crossesIndex;
+   int  circles[50];
+   int circlesIndex;
+
+};
+
+void drawLine(int x0,int y0,int lenghtL,int dir)
+{
+	for(int i = 0;i<lenghtL;i++)
+	{
+		if(dir == horizontal)
+		{
+			y0++;
+		}
+		if(dir == vertical)
+		{
+			x0++;
+		}
+		if(dir == crossUP)
+		{
+			y0--;
+			x0++;
+		}
+		if(dir == crossDOWN)
+		{
+			y0++;
+			x0++;
+		}
+		lcd_pixel(x0,y0);
+	}
+}
+void drawCross(int x,int y)
+{
+	drawLine(x,y,crossLenght,crossDOWN);
+	drawLine(x,y+15,crossLenght,crossUP);
+}
+void drawGrid()
+{
+	int sectorY = height/3;	
+	int sectorX = lenght/3;
+
+	drawLine(0,sectorY,lenght,vertical);
+	drawLine(0,sectorY*2,lenght,vertical);
+	drawLine(sectorX,0,lenght,horizontal);
+	drawLine(sectorX*2,0,lenght,horizontal);
+}
 void drawBox(int x0, int y0, int x1, int y1)
 {
 	int p;
@@ -84,6 +145,17 @@ void drawCirc(int x0, int y0, int radius)
 		lcd_pixel(x0 - y, y0 - x);
 	  }
 }
+void moveCursor(int x, int y,type _type)
+{
+	if (_type == cross)
+	{
+		drawCross(x,y);
+	}
+	else if(_type == circle)
+	{
+		drawCirc(x,y,circleRad);
+	}
+};
 
 int main(void)
 {
@@ -94,26 +166,7 @@ int main(void)
 	lcd_init();
 	
 	lcd_clear();
-	
-	// Piirtää näytölle neliön pikseli kerrallaan
-	lcd_pixel(20,10);
-	lcd_pixel(20,11);
-			
-	lcd_pixel(20,18);
-	
-	lcd_pixel(30,10);
-	lcd_pixel(30,11);
-		
-	lcd_pixel(30,18);
-	
-	
-	// Piirtää näytölle ympyrän 
 
-	drawCirc(40, 40, 10);
- 	drawBox(10,10,20,20);
-
-	
-	// Testataan viivan piirtoa
-	//lcd_Line_vert(40, 40, 50); // proto Fungtio 
-	//lcd_Line_Hor(5, 5, 20);
+	drawGrid();
+	drawCross(50,43);
 }

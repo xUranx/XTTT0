@@ -43,7 +43,9 @@ OBJECTS = Harj9.o lcd.o printhex.o
 LINKONLYOBJECTS = 
 
 ## Build
-all: $(TARGET) Harj9.hex Harj9.eep Harj9.lss## Compile
+all: $(TARGET) Harj9.hex Harj9.eep Harj9.lss size
+
+## Compile
 Harj9.o: ../Harj9.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
@@ -65,6 +67,10 @@ $(TARGET): $(OBJECTS)
 
 %.lss: $(TARGET)
 	avr-objdump -h -S $< > $@
+
+size: ${TARGET}
+	@echo
+	@avr-size -C --mcu=${MCU} ${TARGET}
 
 ## Clean target
 .PHONY: clean
